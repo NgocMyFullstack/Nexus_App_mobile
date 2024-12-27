@@ -9,4 +9,5 @@ class AppRoutes {
   static const String customercate = "/customercate";
   static const String informationscreen = '/information';
   static const String financescreen = '/finance';
+  static const String projectproductscreen = '/projectproductscreen';
 }

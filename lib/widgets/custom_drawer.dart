@@ -1,6 +1,7 @@
 import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
+import 'package:db_app/screens/project/project_product_screen.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,12 @@ class CustomDrawer extends StatelessWidget {
                 context,
                 title: 'HÀNG HÓA DỰ ÁN',
                 onTap: () {
-                  // Chưa được định nghĩa.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProjectProductScreen(),
+                    ),
+                  );
                 },
               ),
               _buildDrawerItem(

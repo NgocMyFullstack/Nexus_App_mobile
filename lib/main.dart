@@ -1,5 +1,6 @@
 import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
+import 'package:db_app/screens/project/project_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'routes/app_routes.dart';
 import 'widgets/bottomnavbar.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.customercate: (_) => const CustomerCare(),
         AppRoutes.informationscreen: (_) => const InformationScreen(),
         AppRoutes.financescreen: (_) => const FinanceScreen(),
+        AppRoutes.projectproductscreen: (_) => const ProjectProductScreen(),
       },
     );
   }

@@ -105,7 +105,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             alignment: Alignment.topRight,
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 20.0,
+                top: 2.0,
                 left: 10.0,
                 right: 15.0,
               ),

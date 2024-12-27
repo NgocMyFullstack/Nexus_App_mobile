@@ -38,10 +38,12 @@ class PlanItem {
 class TodoListItem {
   final String content;
   final String date;
+  final String money;
 
   TodoListItem({
     required this.content,
     required this.date,
+    required this.money,
   });
 }
 
@@ -49,13 +51,15 @@ class _FinanceScreenState extends State<FinanceScreen> {
   @override
   Widget build(BuildContext context) {
     List<TodoListItem> todoitems = [
-      TodoListItem(content: 'Hồ sơ nghiệm thu', date: '01 Nov'),
-      TodoListItem(content: 'Biên bản họp thống nhất vấn đề', date: '01 Nov'),
       TodoListItem(
-          content: 'Danh mục vật tư đệ trình phê duyệt', date: '01 Aug'),
-      TodoListItem(content: ' Đề nghị thanh toán tạm ứng', date: '01 Aug'),
+          content: 'Phase 01', date: '01 April 2024', money: '100M VND'),
       TodoListItem(
-          content: ' Hồ sơ tạm ứng/thanh toán - Bảo lãnh', date: '01 Aug'),
+          content: 'Phase 02', date: '25 April 2024', money: '100M VND'),
+      TodoListItem(content: 'Phase 03', date: '15 May 2024', money: '100M VND'),
+      TodoListItem(
+          content: ' Phase 04', date: '30 April 2024', money: '100M VND'),
+      TodoListItem(
+          content: 'Đợt Dự Thu', date: '15 June 2024', money: '200M VND'),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -68,12 +72,26 @@ class _FinanceScreenState extends State<FinanceScreen> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
-          'Finance',
-          style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
-            fontSize: 18,
-          ),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Customer Name',
+              style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 4), // Tạo khoảng cách giữa hai dòng
+            const Text(
+              'Good Morning',
+              style: TextStyle(
+                color: Color(0xFFEF5C3B), // Màu #EF5C3B
+                fontSize: 16,
+              ),
+            ),
+          ],
         ),
         actions: [
           Builder(
@@ -102,7 +120,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
           ),
         ],
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(60.0),
+          preferredSize: const Size.fromHeight(10.0),
           child: Column(
             children: [
               // Đường kẻ ngang
@@ -111,41 +129,41 @@ class _FinanceScreenState extends State<FinanceScreen> {
                 height: 0.75, // Chiều cao của đường kẻ
                 color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Container(
-                  width: 366.0,
-                  height: 34.5,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFD9D9D9).withOpacity(0.28),
-                    borderRadius: BorderRadius.circular(6.0),
-                  ),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: const InputDecoration(
-                            hintText: 'Search...',
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(color: Colors.grey),
-                          ),
-                          onChanged: (value) {
-                            // Thực hiện logic tìm kiếm ở đây
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding:
+              //       const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              //   child: Container(
+              //     width: 366.0,
+              //     height: 34.5,
+              //     decoration: BoxDecoration(
+              //       color: const Color(0xFFD9D9D9).withOpacity(0.28),
+              //       borderRadius: BorderRadius.circular(6.0),
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         const Padding(
+              //           padding: EdgeInsets.symmetric(horizontal: 8.0),
+              //           child: Icon(
+              //             Icons.search,
+              //             color: Colors.grey,
+              //           ),
+              //         ),
+              //         Expanded(
+              //           child: TextField(
+              //             decoration: const InputDecoration(
+              //               hintText: 'Search...',
+              //               border: InputBorder.none,
+              //               hintStyle: TextStyle(color: Colors.grey),
+              //             ),
+              //             onChanged: (value) {
+              //               // Thực hiện logic tìm kiếm ở đây
+              //             },
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -167,182 +185,189 @@ class _FinanceScreenState extends State<FinanceScreen> {
                   // tiêu đề project name
                   const SizedBox(height: 6),
                   Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.only(left: 9.0),
-                    child: Text(
-                      'Project Name',
-                      style: TextStyle(
-                        fontSize: largeFontSize,
-                        fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                      ),
-                    ),
-                  ),
-
-                  Container(
+                    width: MediaQuery.of(context).size.width *
+                        0.9, // Chiều rộng là 90% màn hình
                     margin: const EdgeInsets.all(10),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius:
-                          BorderRadius.circular(8), // Border-radius of 8px
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color.fromRGBO(
-                              187, 187, 187, 0.25), // Shadow color
-                          blurRadius: 31, // Blur effect of the shadow
-                          offset: const Offset(0, 5), // Position of the shadow
+                          color: const Color.fromRGBO(187, 187, 187, 0.25),
+                          blurRadius: 31,
+                          offset: const Offset(0, 5),
                         ),
                       ],
                     ),
-                    child: Row(
+                    child: Column(
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${tasks.length}',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 255, 0, 0),
-                                ),
-                              ),
-                              SizedBox(height: 2),
-                              Text(
-                                'TOTAL TICKET',
-                                style: TextStyle(
-                                  fontSize: smallFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ),
-                              SizedBox(height: 2),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: CircularPercentIndicator(
-                              radius: 40.0,
-                              lineWidth: 4.0,
-                              percent: 0.8,
-                              center: Text(
-                                '80%',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ),
-                              progressColor:
-                                  const Color.fromARGB(255, 255, 0, 0),
-                              backgroundColor:
-                                  const Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '10',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color(0xFF00D09E),
-                                ),
-                              ),
-                              SizedBox(height: 2),
-                              Text(
-                                'COMPLETED',
-                                style: TextStyle(
-                                  fontSize: smallFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ),
-                              SizedBox(height: 2),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // tiêu đề Processed Images
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.only(left: 9.0),
-                    child: Text(
-                      'Contact',
-                      style: TextStyle(
-                        fontSize: largeFontSize,
-                        fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  SizedBox(
-                    height: 200,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (var i = 1; i <= 3; i++)
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: FittedBox(
-                                fit: BoxFit.contain,
-                                child: InstaImageViewer(
-                                  child: Image.asset(
-                                      'assets/images/project_img_$i.png'),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-
-                  // tiêu đề Record
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        padding: const EdgeInsets.only(left: 9.0),
-                        child: Text(
-                          'Record',
+                        Text(
+                          'Total project value',
                           style: TextStyle(
                             fontSize: largeFontSize,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '1.000.000.000 VND',
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: largeFontSize * 1.5,
+                            color: Color(0xFFEF5C3B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Container thứ nhất
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.fromLTRB(17, 10, 17, 10),
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color:
+                                    const Color.fromRGBO(187, 187, 187, 0.25),
+                                blurRadius: 31,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'đã thanh toán',
+                                style: TextStyle(
+                                  // Loại bỏ const ở đây
+                                  fontSize: largeFontSize * 0.8,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '300M ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: largeFontSize * 1.0,
+                                      color: const Color(0xFF00BBFF),
+                                    ),
+                                  ),
+                                  Text(
+                                    'VND ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: largeFontSize * 0.8,
+                                      color: const Color(0xFF00BBFF),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      const SizedBox(
-                          height: 8), // Khoảng cách giữa text và line
-                      Container(
-                        width: MediaQuery.of(context).size.width *
-                            0.9, // Tỷ lệ width (90% màn hình)
-                        height: 0.75, // Chiều cao của line
-                        color: const Color(0xFFD4D4D4), // Màu của line
+                      // Container thứ hai
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.fromLTRB(17, 10, 17, 10),
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color:
+                                    const Color.fromRGBO(187, 187, 187, 0.25),
+                                blurRadius: 31,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Dự thu',
+                                style: TextStyle(
+                                  fontSize: largeFontSize * 0.8,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '200M ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: largeFontSize * 1.0,
+                                      color: const Color(0xFF223F96),
+                                    ),
+                                  ),
+                                  Text(
+                                    'VND ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: largeFontSize * 0.8,
+                                      color: const Color(0xFF223F96),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
 
+                  // Đường line
+                  const SizedBox(height: 10),
                   Container(
-                    height: 150.0, // Set a fixed height for the container
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: 0.75,
+                    color: const Color(0xFFD4D4D4),
+                  ),
+
+                  // buttom
+                  const SizedBox(height: 20),
+                  Center(
+                    child: Container(
+                      width: 320,
+                      height: 63,
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(0, 238, 238, 238),
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(color: Colors.indigo, width: 2),
+                      ),
+                      child: Center(
+                        child: CustomToggleButtons(),
+                      ),
+                    ),
+                  ),
+
+                  // tiêu đề Master List
+                  const SizedBox(height: 16),
+                  Container(
+                    height: 400.0, // Set a fixed height for the container
                     padding:
                         const EdgeInsets.all(8.0), // Padding inside the border
                     decoration: BoxDecoration(
@@ -361,15 +386,25 @@ class _FinanceScreenState extends State<FinanceScreen> {
                             builder: (context, constraints) {
                               final double fontSizeContent =
                                   constraints.maxWidth *
-                                      0.045; // Font size for content
+                                      0.035; // Font size for content
                               final double fontSizeDate = constraints.maxWidth *
-                                  0.04; // Font size for date
+                                  0.03; // Font size for date
                               return Container(
                                 margin: const EdgeInsets.all(10),
                                 padding: const EdgeInsets.all(5),
                                 color: const Color.fromARGB(42, 255, 255, 255),
                                 child: Row(
                                   children: [
+                                    Column(
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/Icon/Coins.svg',
+                                          width: 27.0,
+                                          height: 27.0,
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(width: 5),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -378,16 +413,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                           Text(
                                             todo.content,
                                             style: TextStyle(
-                                              fontSize: fontSizeContent,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 0, 0),
-                                            ),
-                                            softWrap: true,
-                                          ),
-                                          Text(
-                                            'Due on: ${todo.date}',
-                                            style: TextStyle(
-                                              fontSize: fontSizeDate,
+                                              fontSize: fontSizeContent * 1.1,
                                               color: const Color.fromARGB(
                                                   255, 0, 0, 0),
                                             ),
@@ -397,24 +423,40 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                       ),
                                     ),
                                     const SizedBox(width: 10),
-                                    Column(
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/Icon/Document 2.svg',
-                                          width: 24.0,
-                                          height: 24.0,
-                                        ),
-                                        const SizedBox(
-                                            height:
-                                                4), // Khoảng cách giữa icon và chữ
-                                        const Text(
-                                          'file',
-                                          style: TextStyle(
-                                            fontSize: 12.0,
-                                            color: Color.fromARGB(255, 0, 0, 0),
+                                    Expanded(
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            ' ${todo.date}',
+                                            style: TextStyle(
+                                              fontSize: fontSizeDate,
+                                              color: const Color.fromARGB(
+                                                  255, 255, 132, 0),
+                                            ),
+                                            softWrap: true,
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            ' |',
+                                            style: TextStyle(
+                                              fontSize: fontSizeDate * 1.0,
+                                              color: const Color.fromARGB(
+                                                  143, 155, 155, 155),
+                                            ),
+                                            softWrap: true,
+                                          ),
+                                          Text(
+                                            ' ${todo.money}',
+                                            style: TextStyle(
+                                              fontSize: fontSizeDate,
+                                              color: const Color.fromARGB(
+                                                  255, 255, 132, 0),
+                                            ),
+                                            softWrap: true,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -426,301 +468,62 @@ class _FinanceScreenState extends State<FinanceScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
-                  // tiêu đề Master List
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        padding: const EdgeInsets.only(left: 9.0),
-                        child: Text(
-                          'Master List',
-                          style: TextStyle(
-                            fontSize: largeFontSize,
-                            fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                          height: 8), // Khoảng cách giữa text và line
-                      Container(
-                        width: MediaQuery.of(context).size.width *
-                            0.9, // Tỷ lệ width (90% màn hình)
-                        height: 0.75, // Chiều cao của line
-                        color: const Color(0xFFD4D4D4), // Màu của line
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                          0, 255, 255, 255), // Background color
-                      borderRadius:
-                          BorderRadius.circular(8), // Border-radius of 8px
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromRGBO(
-                              187, 187, 187, 0.25), // Shadow color
-                          blurRadius: 31, // Blur effect of the shadow
-                          offset: const Offset(0, 5), // Position of the shadow
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // Tiêu đề "Material"
-                              Text(
-                                '3D',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(
-                                      255, 255, 102, 0), // Màu cam như hình
-                                ),
-                              ),
-                              const SizedBox(
-                                  height:
-                                      10), // Khoảng cách giữa tiêu đề và vòng tròn
-                              // Vòng tròn với phần trăm
-                              CircularPercentIndicator(
-                                radius: 40.0,
-                                lineWidth: 4.0,
-                                percent: 1.0, // Tương ứng với 75%
-                                center: Text(
-                                  '100%',
-                                  style: TextStyle(
-                                    fontSize: mediumFontSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ),
-                                progressColor: const Color.fromARGB(
-                                    255, 255, 102, 0), // Màu cam
-                                backgroundColor: const Color.fromARGB(
-                                    255, 0, 0, 50), // Màu xanh đậm
-                              ),
-                              const SizedBox(
-                                  height:
-                                      10), // Khoảng cách giữa vòng tròn và dòng "Total"
-                              // Dòng "Total 20 | 25"
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Total ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                  Text(
-                                    '1 ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(
-                                          255, 255, 102, 0), // Màu cam
-                                    ),
-                                  ),
-                                  Text(
-                                    '| ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                  Text(
-                                    '1',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // Tiêu đề "Material"
-                              Text(
-                                'Shopdrawing',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(
-                                      255, 255, 102, 0), // Màu cam như hình
-                                ),
-                              ),
-                              const SizedBox(
-                                  height:
-                                      10), // Khoảng cách giữa tiêu đề và vòng tròn
-                              // Vòng tròn với phần trăm
-                              CircularPercentIndicator(
-                                radius: 40.0,
-                                lineWidth: 4.0,
-                                percent: 1.0, // Tương ứng với 75%
-                                center: Text(
-                                  '100%',
-                                  style: TextStyle(
-                                    fontSize: mediumFontSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ),
-                                progressColor: const Color.fromARGB(
-                                    255, 255, 102, 0), // Màu cam
-                                backgroundColor: const Color.fromARGB(
-                                    255, 0, 0, 50), // Màu xanh đậm
-                              ),
-                              const SizedBox(
-                                  height:
-                                      10), // Khoảng cách giữa vòng tròn và dòng "Total"
-                              // Dòng "Total 20 | 25"
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Total ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                  Text(
-                                    '1 ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(
-                                          255, 255, 102, 0), // Màu cam
-                                    ),
-                                  ),
-                                  Text(
-                                    '| ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                  Text(
-                                    '1',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // Tiêu đề "Material"
-                              Text(
-                                'Material',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(
-                                      255, 255, 102, 0), // Màu cam như hình
-                                ),
-                              ),
-                              const SizedBox(
-                                  height:
-                                      10), // Khoảng cách giữa tiêu đề và vòng tròn
-                              // Vòng tròn với phần trăm
-                              CircularPercentIndicator(
-                                radius: 40.0,
-                                lineWidth: 4.0,
-                                percent: 0.75, // Tương ứng với 75%
-                                center: Text(
-                                  '75%',
-                                  style: TextStyle(
-                                    fontSize: mediumFontSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ),
-                                progressColor: const Color.fromARGB(
-                                    255, 255, 102, 0), // Màu cam
-                                backgroundColor: const Color.fromARGB(
-                                    255, 0, 0, 50), // Màu xanh đậm
-                              ),
-                              const SizedBox(
-                                  height:
-                                      10), // Khoảng cách giữa vòng tròn và dòng "Total"
-                              // Dòng "Total 20 | 25"
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Total ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                  Text(
-                                    '20 ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(
-                                          255, 255, 102, 0), // Màu cam
-                                    ),
-                                  ),
-                                  Text(
-                                    '| ',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                  Text(
-                                    '25',
-                                    style: TextStyle(
-                                      fontSize: smallFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               );
             },
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomToggleButtons extends StatefulWidget {
+  const CustomToggleButtons({Key? key}) : super(key: key);
+
+  @override
+  State<CustomToggleButtons> createState() => _CustomToggleButtonsState();
+}
+
+class _CustomToggleButtonsState extends State<CustomToggleButtons> {
+  int _selectedIndex = 2; // Mặc định chọn "Monthly"
+
+  final List<String> _options = ["Daily", "Weekly", "Monthly"];
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(_options.length, (index) {
+        final isSelected = _selectedIndex == index;
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: 8), // Khoảng cách giữa các nút
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? const Color.fromARGB(255, 2, 19, 117)
+                    : const Color.fromARGB(0, 255, 255, 255),
+                borderRadius: BorderRadius.circular(20), // Bo góc cho từng nút
+              ),
+              child: Text(
+                _options[index],
+                style: TextStyle(
+                  color: isSelected ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
