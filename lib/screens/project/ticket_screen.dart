@@ -17,9 +17,6 @@ class TicketScreen extends StatefulWidget {
 }
 
 class _TicketScreenState extends State<TicketScreen> {
-  bool isCompletedSelected = false; // Trạng thái của nút Completed
-  bool isApprovedSelected = false; // Trạng thái của nút Approved
-
   void _deleteTask(Map<String, dynamic> task) {
     setState(() {
       // Xóa ticket từ danh sách
@@ -366,12 +363,12 @@ class _TicketScreenState extends State<TicketScreen> {
                                           onTap: () {
                                             setState(() {
                                               // Toggle only the completed status
-                                              isCompletedSelected =
-                                                  !isCompletedSelected;
+                                              task["is_completed"] =
+                                                  !task["is_completed"];
                                             });
                                           },
                                           child: SvgPicture.asset(
-                                            isCompletedSelected
+                                            task["is_completed"]
                                                 ? 'assets/Icon/checkbox.svg' // Replace with the path to your "selected" icon
                                                 : 'assets/Icon/checkbox_checked.svg', // Replace with the path to your "unselected" icon
                                             width:
@@ -404,12 +401,12 @@ class _TicketScreenState extends State<TicketScreen> {
                                           onTap: () {
                                             setState(() {
                                               // Toggle only the approved status
-                                              isApprovedSelected =
-                                                  !isApprovedSelected;
+                                              task["is_approved"] =
+                                                  !task["is_approved"];
                                             });
                                           },
                                           child: SvgPicture.asset(
-                                            isApprovedSelected
+                                            task["is_approved"]
                                                 ? 'assets/Icon/checkbox_checked.svg' // Replace with the path to your "selected" icon
                                                 : 'assets/Icon/checkbox.svg', // Replace with the path to your "unselected" icon
                                             width:

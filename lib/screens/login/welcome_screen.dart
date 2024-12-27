@@ -105,7 +105,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             alignment: Alignment.topRight,
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 2.0,
+                top: 20.0,
                 left: 10.0,
                 right: 15.0,
               ),
@@ -278,7 +278,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                       color: Colors.black),
                                                   onTap: () {
                                                     launchURL(
-                                                        ' https://www.youtube.com/@DBHOMESVIETNAM');
+                                                        'https://www.youtube.com/@DBHOMESVIETNAM');
                                                   },
                                                 ),
                                                 ListTile(
@@ -297,7 +297,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                       color: Colors.black),
                                                   onTap: () {
                                                     launchURL(
-                                                        ' https://www.linkedin.com/company/dbhomes-better-living/');
+                                                        'https://www.linkedin.com/company/dbhomes-better-living/');
                                                   },
                                                 ),
                                                 ListTile(
@@ -316,7 +316,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                       color: Colors.black),
                                                   onTap: () {
                                                     launchURL(
-                                                        ' https://www.pinterest.com/dbhomes2023/ ');
+                                                        'https://www.pinterest.com/dbhomes2023/');
                                                   },
                                                 ),
                                                 ListTile(
@@ -335,7 +335,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                       color: Colors.black),
                                                   onTap: () {
                                                     launchURL(
-                                                        'https://dbhomes.com.vn/  ');
+                                                        'https://dbhomes.com.vn/');
                                                   },
                                                 ),
                                                 ListTile(
@@ -354,7 +354,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                       color: Colors.black),
                                                   onTap: () {
                                                     launchURL(
-                                                        'https://www.tiktok.com/@dbhomes_  ');
+                                                        'https://www.tiktok.com/@dbhomes_');
                                                   },
                                                 ),
                                                 ListTile(
@@ -373,7 +373,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                       color: Colors.black),
                                                   onTap: () {
                                                     launchURL(
-                                                        'https://www.instagram.com/dbhomesvn/ ');
+                                                        'https://www.instagram.com/dbhomesvn/');
                                                   },
                                                 ),
                                               ],
@@ -461,7 +461,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                                   ),
                                                   onTap: () {
                                                     launchURL(
-                                                        'https://shorturl.at/yFqeu ');
+                                                        'https://shorturl.at/yFqeu');
                                                   },
                                                 ),
                                                 ListTile(

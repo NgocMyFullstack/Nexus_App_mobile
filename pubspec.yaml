@@ -68,19 +68,10 @@ flutter:
     - assets/Image/
     - assets/MenuIcon/
     - assets/Icon/
+    - assets/Icon/checkbox_checked.svg
+    - assets/Icon/checkbox.svg
     - assets/Avata/
     - assets/images/
-    - assets/Project/
-    - assets/Project/project1/
-    - assets/Project/project2/
-    - assets/Project/project3/
-    - assets/Project/project4/
-    - assets/Project/project5/
-    - assets/Project/project6/
-    - assets/Project/project7/
-    - assets/Project/project8/
-    - assets/Project/project9/
-    - assets/Project/project10/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:image_painter/image_painter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:db_app/screens/project/project_screen.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../main.dart';
@@ -53,6 +52,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
         TextEditingController(text: widget.task["taskTitle"]);
     taskTitleTextController.text = widget.task["taskTitle"];
     _tasktitle = widget.task["taskTitle"];
+    _selectedDepartment = widget.task["department"];
   }
 
   @override
@@ -594,7 +594,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppBar(
-                      title: const Text("Create Ticket 2"),
+                      title: const Text("Create Ticket"),
                       automaticallyImplyLeading: false,
                     ),
                     Padding(
@@ -717,7 +717,10 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                                     _editedImagePath != null &&
                                     _capturedImagePaths.isNotEmpty) {
                                   final ticket = {
-                                    "description": _description!,
+                                    "floor": _selectedFloor,
+                                    "department": _selectedDepartment,
+                                    "description": _description!
+                                        .trim(), // Loại bỏ khoảng trắng thừa
                                     "editedImagePath": _editedImagePath!,
                                     "capturedImagePaths":
                                         List.from(_capturedImagePaths),
@@ -963,18 +966,26 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                   ),
                 ),
               ),
-              Container(
-                height: 300,
-                width: double.infinity,
-                margin: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: InstaImageViewer(
-                    child: Image.asset(_floorImage),
-                  ),
-                ),
-              ),
+              GestureDetector(
+                  onTap: () {
+                    if (_selectedDepartment == '' || _selectedDepartment == null) {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.warning,
+                        text: 'Vui lòng điền tên khu vực lỗi',
+                      );
+                    } else {
+                      _openEditDialog();
+                    }
+                  },
+                  child: Container(
+                    height: 300,
+                    width: double.infinity,
+                    margin: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: FittedBox(
+                        fit: BoxFit.fill, child: Image.asset(_floorImage)),
+                  )),
               const SizedBox(height: 16),
               Container(
                 alignment: Alignment.centerLeft,
@@ -1093,15 +1104,15 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                if (_tasktitle == '' || _tasktitle == null) {
-                  QuickAlert.show(
-                    context: context,
-                    type: QuickAlertType.warning,
-                    text: 'Vui lòng điền tên Task Title',
-                  );
-                } else {
-                  _openEditDialog();
-                }
+                    if (_selectedDepartment == '' || _selectedDepartment == null) {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.warning,
+                        text: 'Vui lòng điền tên khu vực lỗi',
+                      );
+                    } else {
+                      _openEditDialog();
+                    }
               },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
@@ -1116,11 +1127,11 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                if (_tasktitle == '' || _tasktitle == null) {
+                if (_selectedDepartment == '' || _selectedDepartment == null) {
                   QuickAlert.show(
                     context: context,
                     type: QuickAlertType.warning,
-                    text: 'Vui lòng điển Task Title',
+                    text: 'Vui lòng điền tên khu vực lỗi',
                   );
                 } else if (tickets.isEmpty) {
                   QuickAlert.show(

@@ -1,8 +1,8 @@
-import 'package:db_app/screens/project/ticket_screen.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 // Model to represent a project with a list of image paths
 class Project {
@@ -25,74 +25,66 @@ class _HomeScreenState extends State<HomeScreen> {
     Project(
       name: 'D1 Mension',
       imagePaths: [
-        'assets/Project/project1/110.jpg',
-        'assets/Project/project1/115.jpg',
-        'assets/Project/project1/117.jpg',
-        'assets/Project/project1/119.jpg',
+        'assets/images/110.jpg',
+        'assets/images/115.jpg',
+        'assets/images/117.jpg',
+        'assets/images/119.jpg',
       ],
     ),
     Project(
       name: 'Đảo Kim Cương',
       imagePaths: [
-        'assets/Project/project2/KHACHBEP_343 copy.jpg',
-        'assets/Project/project2/KHACHBEP_PRONT.jpg',
-        'assets/Project/project2/KHACHBEP3.jpg',
-        'assets/Project/project2/MASTER_FRONT.jpg',
+        'assets/images/222.jpg',
+        'assets/images/223.jpg',
+        'assets/images/224.jpg',
+        'assets/images/225.jpg',
       ],
     ),
     Project(
       name: 'Define anh Hà',
       imagePaths: [
-        'assets/Project/Project3/1.png',
-        'assets/Project/Project3/2.png',
-        'assets/Project/Project3/4.png',
-        'assets/Project/Project3/10.png',
-      ],
-    ),
-    Project(
-      name: 'Define anh Hà',
-      imagePaths: [
-        'assets/Project/Project4/2.jpg',
-        'assets/Project/Project4/3.jpg',
-        'assets/Project/Project4/4.jpg',
-        'assets/Project/Project4/6.jpg',
-        'assets/Project/Project4/10.jpg',
+        'assets/images/444.jpg',
+        'assets/images/445.jpg',
+        'assets/images/446.jpg',
+        'assets/images/447.jpg',
+        'assets/images/448.jpg',
       ],
     ),
     Project(
       name: 'Filmore',
       imagePaths: [
-        'assets/Project/Project5/TIN00159.jpg',
-        'assets/Project/Project5/TIN00379_la-phang-giuong__.jpg',
-        'assets/Project/Project5/TIN00803_fix (1).jpg',
-        'assets/Project/Project5/TIN01371.jpg',
+        'assets/images/551.jpg',
+        'assets/images/555.jpg',
+        'assets/images/553.jpg',
+        'assets/images/554.jpg',
       ],
     ),
     Project(
       name: 'Horizon Phú Mỹ Hưng',
       imagePaths: [
-        'assets/Project/Project6/22.jpg',
-        'assets/Project/Project6/23.jpg',
-        'assets/Project/Project6/29.jpg',
-        'assets/Project/Project6/The Horizon_A405_28.jpg',
+        'assets/images/661.jpg',
+        'assets/images/662.jpg',
+        'assets/images/663.jpg',
+        'assets/images/666.jpg',
       ],
     ),
     Project(
       name: 'Metropole',
       imagePaths: [
-        'assets/Project/Project7/12 JBG00292-HDR.jpg',
-        'assets/Project/Project7/28 JBG00393-HDR.jpg',
-        'assets/Project/Project7/29 JBG00385-Enhanced-NR.jpg',
-        'assets/Project/Project7/34 JBG00432-HDR.jpg',
+        'assets/images/771.jpg',
+        'assets/images/772.jpg',
+        'assets/images/773.jpg',
+        'assets/images/774.jpg',
+        'assets/images/775.jpg',
       ],
     ),
     Project(
       name: 'MidTown',
       imagePaths: [
-        'assets/Project/Project8/1.jpg',
-        'assets/Project/Project8/10.07.24 MIDTOWN - MRS. KIM - Living roomjpg (3).jpg',
-        'assets/Project/Project8/10.07.24 MIDTOWN - MRS. KIM - Living roomjpg (5).jpg',
-        'assets/Project/Project8/10.07.24 MIDTOWN - MRS. KIM -master room (2).jpg',
+        'assets/images/881.jpg',
+        'assets/images/882.jpg',
+        'assets/images/883.jpg',
+        'assets/images/884.jpg',
       ],
     ),
   ];
@@ -596,149 +588,183 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 200,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/Image/doisong.JPG'),
-                                fit: BoxFit.fill,
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL(
+                              'https://dbhomes.com.vn/chuyen-muc/tin-tuc/doi-song/'); // Đường dẫn cần mở
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              height: 200,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/Image/doisong.JPG'),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                          ),
-                          const SizedBox(
-                              height: 1), // Khoảng cách giữa hình và tiêu đề
-                          const Text(
-                            'Đời sống', // Tiêu đề của hình ảnh
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(
+                                height: 1), // Khoảng cách giữa hình và tiêu đề
+                            const Text(
+                              'Đời sống', // Tiêu đề của hình ảnh
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+
                       const SizedBox(
                           width: 16), // Khoảng cách giữa các khối hình ảnh
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 200,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/Image/nhadep.jpg'),
-                                fit: BoxFit.fill,
+                      GestureDetector(
+                          onTap: () {
+                            _launchURL(
+                                'https://dbhomes.com.vn/chuyen-muc/tin-tuc/nha-dep/'); // Đường dẫn cần mở
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                height: 200,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    image:
+                                        AssetImage('assets/Image/nhadep.jpg'),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          const SizedBox(height: 1),
-                          const Text(
-                            'Nhà đẹp',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
+                              const SizedBox(height: 1),
+                              const Text(
+                                'Nhà đẹp',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          )),
+
                       const SizedBox(
                           width: 16), // Khoảng cách giữa các khối hình ảnh
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 200,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/Image/noithat.jpg'),
-                                fit: BoxFit.fill,
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL(
+                              'https://dbhomes.com.vn/chuyen-muc/tin-tuc/noi-that/'); // Đường dẫn cần mở
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              height: 200,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/Image/noithat.jpg'),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                          ),
-                          const SizedBox(height: 1),
-                          const Text(
-                            'Nội Thất',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(height: 1),
+                            const Text(
+                              'Nội Thất',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+
                       const SizedBox(
                           width: 16), // Khoảng cách giữa các khối hình ảnh
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 200,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/Image/vanhoa.png'),
-                                fit: BoxFit.fill,
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL(
+                              'https://dbhomes.com.vn/chuyen-muc/tin-tuc/van-hoa/'); // Đường dẫn cần mở
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              height: 200,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/Image/vanhoa.png'),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                          ),
-                          const SizedBox(height: 1),
-                          const Text(
-                            'Văn hóa',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(height: 1),
+                            const Text(
+                              'Văn hóa',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+
                       const SizedBox(
                           width: 16), // Khoảng cách giữa các khối hình ảnh
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 200,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('assets/Image/xuhuong.png'),
-                                fit: BoxFit.fill,
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL(
+                              'https://dbhomes.com.vn/chuyen-muc/tin-tuc/xu-huong/'); // Đường dẫn cần mở
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              height: 200,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/Image/xuhuong.png'),
+                                  fit: BoxFit.fill,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                          ),
-                          const SizedBox(height: 1),
-                          const Text(
-                            'Xu hướng',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(height: 1),
+                            const Text(
+                              'Xu hướng',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),

@@ -7,7 +7,6 @@ import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:image_painter/image_painter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
-import 'package:db_app/screens/project/project_screen.dart';
 import '../../main.dart';
 import 'task_list.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +15,7 @@ import 'package:flutter_svg/svg.dart';
 
 // Biến trạng thái để lưu giá trị được chọn
 String _selectedFloor = 'Floor 1'; // Giá trị mặc định
-String _selectedDepartment = 'Living Area'; // Giá trị mặc định
+String _selectedDepartment = ''; // Giá trị mặc định
 String _floorImage = 'assets/images/layout_floor_1_ticket.png';
 String? _editedImagePath;
 // String? _capturedImagePath;
@@ -263,7 +262,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppBar(
-                      title: const Text("Create Ticket 2"),
+                      title: const Text("Create Ticket"),
                       automaticallyImplyLeading: false,
                     ),
                     Padding(
@@ -643,18 +642,28 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                   ),
                 ),
               ),
-              Container(
-                height: 300,
-                width: double.infinity,
-                margin: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: InstaImageViewer(
-                    child: Image.asset(_floorImage),
-                  ),
-                ),
-              ),
+              GestureDetector(
+                  onTap: () {
+                    // ignore: unnecessary_null_comparison
+                    if (_selectedDepartment == '' || _selectedDepartment == null) {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.warning,
+                        text: 'Vui lòng điền tên khu vực lỗi',
+                      );
+                    } else {
+                      _openEditDialog();
+                    }
+                  },
+                  child: Container(
+                    height: 300,
+                    width: double.infinity,
+                    margin: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: FittedBox(
+                        fit: BoxFit.fill, child: Image.asset(_floorImage)),
+                  )),
+
               const SizedBox(height: 16),
               Container(
                 alignment: Alignment.centerLeft,
@@ -772,15 +781,15 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                if (_tasktitle == '' || _tasktitle == null) {
-                  QuickAlert.show(
-                    context: context,
-                    type: QuickAlertType.warning,
-                    text: 'Vui lòng điền tên Task Title',
-                  );
-                } else {
-                  _openEditDialog();
-                }
+                    if (_selectedDepartment == '' || _selectedDepartment == null) {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.warning,
+                        text: 'Vui lòng điền tên khu vực lỗi',
+                      );
+                    } else {
+                      _openEditDialog();
+                    }
               },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
@@ -795,7 +804,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                if (_tasktitle == '' || _tasktitle == null) {
+                if (_selectedDepartment == '' || _selectedDepartment == null) {
                   QuickAlert.show(
                     context: context,
                     type: QuickAlertType.warning,
@@ -841,6 +850,8 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                     return {
                       "taskTitle":
                           "${floorDepartment[0]} - ${floorDepartment[1]}",
+                      "is_completed": false,
+                      "is_approved": false,
                       "floor": floorDepartment[0], // Sử dụng chuỗi "Floor 1"
                       "department": floorDepartment[1], // Sử dụng chuỗi "HR"
                       "create_date": dateFormat.format(DateTime.now()),

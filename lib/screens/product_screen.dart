@@ -65,7 +65,7 @@ class Product extends StatelessWidget {
                 children: [
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 20,
+                    height: 30,
                     child: const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -147,7 +147,7 @@ class Product extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: 20,
+                    height: 30,
                     child: const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(

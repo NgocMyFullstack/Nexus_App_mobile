@@ -19,14 +19,14 @@ class PlanItem {
   final String total;
   final String approved;
   final String processing;
-  final double progress; // Phần trăm tiến độ
+  final double progress;
 
   PlanItem({
     required this.title,
     required this.total,
     required this.approved,
     required this.processing,
-    required this.progress, // Phần trăm tiến độ (giá trị từ 0.0 đến 1.0)
+    required this.progress,
   });
 }
 

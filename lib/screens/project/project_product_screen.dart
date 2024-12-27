@@ -56,6 +56,7 @@ class ProjectProductScreenState extends StatefulWidget {
 class _ProjectProductScreenState extends State<ProjectProductScreen> {
   bool isCompletedSelected = false;
   bool isApprovedSelected = false;
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +173,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // tiêu đề project name
+                  //  RadioExamplee
                   const SizedBox(height: 6),
                   Container(
                     alignment: Alignment.centerLeft,
@@ -199,55 +200,67 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                     child: Row(
                       children: [
                         Builder(
-                          builder: (context) => Container(
-                            margin: const EdgeInsets.only(right: 16.0),
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(0, 255, 255, 255),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Center(
-                              child: IconButton(
-                                icon: SvgPicture.asset(
-                                  'assets/Icon/calendarremove.svg',
-                                  width: 30.0,
-                                  height: 30.0,
-                                ),
-                                onPressed: () {
-                                  Scaffold.of(context)
-                                      .openDrawer(); // Mở Drawer khi nhấn biểu tượng Burger
-                                },
+                          builder: (context) {
+                            double screenWidth =
+                                MediaQuery.of(context).size.width;
+
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(0, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Due Date',
-                                style: TextStyle(
-                                  fontSize: mediumFontSize * 0.5,
-                                  fontWeight: FontWeight.bold,
-                                  color:
-                                      const Color.fromARGB(255, 154, 154, 154),
-                                ),
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    icon: SvgPicture.asset(
+                                      'assets/Icon/calendarremove.svg',
+                                      width: 30.0,
+                                      height: 30.0,
+                                    ),
+                                    onPressed: () async {
+                                      DateTime? pickedDate =
+                                          await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime(2100),
+                                      );
+
+                                      if (pickedDate != null) {
+                                        setState(() {
+                                          _selectedDate = pickedDate;
+                                        });
+                                      }
+                                    },
+                                  ),
+                                  const SizedBox(width: 10.0),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Due Date",
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.045,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      Text(
+                                        _selectedDate != null
+                                            ? "${_selectedDate!.day}/${_selectedDate!.month}"
+                                            : "No date ",
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.04,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              SizedBox(height: 2),
-                              Text(
-                                '21 Nov',
-                                style: TextStyle(
-                                  fontSize: smallFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ),
-                              SizedBox(height: 2),
-                            ],
-                          ),
+                            );
+                          },
                         ),
                         SizedBox(width: 10),
                         Expanded(
@@ -372,96 +385,129 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                                       ),
                                     ),
                                     const SizedBox(width: 10),
-                                    Tooltip(
-                                      message: 'Completed',
-                                      child: Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                // Toggle only the completed status
-                                                isCompletedSelected =
-                                                    !isCompletedSelected;
-                                              });
-                                            },
-                                            child: SvgPicture.asset(
-                                              isCompletedSelected
-                                                  ? 'assets/Icon/checkbox.svg'
-                                                  : 'assets/Icon/checkbox_checked.svg',
-                                              width: 24,
-                                              height: 24,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 0, 0),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 2.0),
-                                            child: Text(
-                                              'Completed',
-                                              style: TextStyle(
-                                                fontSize: smallFontSize,
-                                                color: const Color.fromARGB(
-                                                    255, 0, 0, 0),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(width: 4),
-                                    Tooltip(
-                                      message: 'Sub',
-                                      child: Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                isApprovedSelected =
-                                                    !isApprovedSelected;
-                                              });
-                                            },
-                                            child: SvgPicture.asset(
-                                              isApprovedSelected
-                                                  ? 'assets/Icon/checkbox_checked.svg'
-                                                  : 'assets/Icon/checkbox.svg',
-                                              width: 24,
-                                              height: 24,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 0, 0),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 2.0),
-                                            child: Text(
-                                              'Sub',
-                                              style: TextStyle(
-                                                fontSize: smallFontSize,
-                                                color: const Color.fromARGB(
-                                                    255, 0, 0, 0),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(width: 4),
-                                    Column(
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        SvgPicture.asset(
-                                          'assets/Icon/Document 2.svg',
-                                          width: 24.0,
-                                          height: 24.0,
+                                        Tooltip(
+                                          message: 'Completed',
+                                          child: Column(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    // Toggle only the completed status
+                                                    isCompletedSelected =
+                                                        !isCompletedSelected;
+                                                  });
+                                                },
+                                                child: SvgPicture.asset(
+                                                  isCompletedSelected
+                                                      ? 'assets/Icon/checkbox.svg'
+                                                      : 'assets/Icon/checkbox_checked.svg',
+                                                  width: 24,
+                                                  height: 24,
+                                                  color: const Color.fromARGB(
+                                                      255, 0, 0, 0),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 2.0),
+                                                child: Text(
+                                                  'Completed',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: const Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        const SizedBox(
-                                            height:
-                                                4), // Khoảng cách giữa icon và chữ
-                                        const Text(
-                                          'Report',
-                                          style: TextStyle(
-                                            fontSize: 12.0,
-                                            color: Color.fromARGB(255, 0, 0, 0),
+                                        SizedBox(width: 4),
+                                        Tooltip(
+                                          message: 'Approved',
+                                          child: Column(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    // Toggle only the approved status
+                                                    isApprovedSelected =
+                                                        !isApprovedSelected;
+                                                  });
+                                                },
+                                                child: SvgPicture.asset(
+                                                  isApprovedSelected
+                                                      ? 'assets/Icon/checkbox_checked.svg' // Replace with the path to your "selected" icon
+                                                      : 'assets/Icon/checkbox.svg', // Replace with the path to your "unselected" icon
+                                                  width:
+                                                      24, // Adjust the size as needed
+                                                  height:
+                                                      24, // Adjust the size as needed
+                                                  color: const Color.fromARGB(
+                                                      255,
+                                                      0,
+                                                      0,
+                                                      0), // Icon color
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 2.0),
+                                                child: Text(
+                                                  'Approved',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: const Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width: 4),
+                                        Tooltip(
+                                          message: 'Delete',
+                                          child: GestureDetector(
+                                            // onTap: () => _deleteTask(task),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize
+                                                  .min, // Ensure the column only takes up as much space as needed
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/Icon/Document 2.svg', // Path to your Coffee.svg
+                                                  width:
+                                                      24, // Adjust the size as needed
+                                                  height:
+                                                      24, // Adjust the size as needed
+                                                  color: const Color.fromARGB(
+                                                      255,
+                                                      0,
+                                                      0,
+                                                      0), // Icon color
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 2.0),
+                                                  child: Text(
+                                                    'Report',
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      color:
+                                                          const Color.fromARGB(
+                                                              255, 0, 0, 0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -816,7 +862,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                 backgroundColor: const Color.fromRGBO(254, 211, 106, 1),
               ),
               child: const Text(
-                'Categoryes',
+                'CATEGORIES',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -856,25 +902,32 @@ class RadioExample extends StatefulWidget {
 }
 
 class _RadioExampleState extends State<RadioExample> {
-  // Khai báo selectedValue để lưu giá trị của nút radio đã chọn
   int selectedValue = 1;
 
   @override
   Widget build(BuildContext context) {
+    double baseWidth = MediaQuery.of(context).size.width;
+    double smallFontSize = baseWidth * 0.03;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Sử dụng Expanded để các nút radio co giãn khi thay đổi kích thước màn hình
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        Wrap(
+          alignment: WrapAlignment.start,
+          spacing: 20.0,
           children: [
-            // Nút radio 1
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+            for (var option in [
+              {'value': 1, 'label': 'All'},
+              {'value': 2, 'label': 'Completed'},
+              {'value': 3, 'label': 'Processing'},
+              {'value': 4, 'label': 'Late'},
+              {'value': 5, 'label': 'Early'},
+            ])
+              Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Radio<int>(
-                    value: 1,
+                    value: option['value'] as int,
                     groupValue: selectedValue,
                     onChanged: (value) {
                       setState(() {
@@ -883,110 +936,15 @@ class _RadioExampleState extends State<RadioExample> {
                     },
                   ),
                   Text(
-                    'All',
+                    option['label'] as String,
                     style: TextStyle(
+                      fontSize:
+                          smallFontSize, // Sử dụng kích thước chữ dựa trên baseWidth
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
-            ),
-
-            // Nút radio 2
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Radio<int>(
-                    value: 2,
-                    groupValue: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value!;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Completed',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Nút radio 3
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Radio<int>(
-                    value: 3,
-                    groupValue: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value!;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Processing',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Nút radio 4
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Radio<int>(
-                    value: 4,
-                    groupValue: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value!;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Late',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Nút radio 5
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Radio<int>(
-                    value: 5,
-                    groupValue: selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue = value!;
-                      });
-                    },
-                  ),
-                  Text(
-                    'Early',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ],
