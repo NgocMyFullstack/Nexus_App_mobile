@@ -176,7 +176,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                   //  RadioExamplee
                   const SizedBox(height: 6),
                   Container(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     padding: const EdgeInsets.only(left: 9.0),
                     child: RadioExample(),
                   ),

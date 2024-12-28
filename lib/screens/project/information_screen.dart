@@ -212,11 +212,11 @@ class _InformationScreenState extends State<InformationScreen> {
                               ),
                               SizedBox(height: 2),
                               Text(
-                                'TOTAL TICKET',
+                                'Total ticket',
                                 style: TextStyle(
                                   fontSize: smallFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  // fontWeight: FontWeight.bold,
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               SizedBox(height: 2),
@@ -230,13 +230,12 @@ class _InformationScreenState extends State<InformationScreen> {
                             child: CircularPercentIndicator(
                               radius: 40.0,
                               lineWidth: 4.0,
-                              percent: 0.8,
+                              percent: 1.0,
                               center: Text(
-                                '80%',
+                                '100%',
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               progressColor:
@@ -257,16 +256,16 @@ class _InformationScreenState extends State<InformationScreen> {
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color(0xFF00D09E),
+                                  color: const Color(0xFF34A846),
                                 ),
                               ),
                               SizedBox(height: 2),
                               Text(
-                                'COMPLETED',
+                                'Completed',
                                 style: TextStyle(
                                   fontSize: smallFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  // fontWeight: FontWeight.bold,
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               SizedBox(height: 2),
@@ -297,7 +296,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          for (var i = 1; i <= 3; i++)
+                          for (var i = 1; i <= 4; i++)
                             Container(
                               margin: const EdgeInsets.all(10),
                               child: FittedBox(
@@ -411,7 +410,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                           'file',
                                           style: TextStyle(
                                             fontSize: 12.0,
-                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                       ],
@@ -483,7 +482,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                 '3D',
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
                                   color: const Color.fromARGB(
                                       255, 255, 102, 0), // Màu cam như hình
                                 ),
@@ -563,7 +562,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                 'Shopdrawing',
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
                                   color: const Color.fromARGB(
                                       255, 255, 102, 0), // Màu cam như hình
                                 ),
@@ -643,7 +642,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                 'Material',
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
                                   color: const Color.fromARGB(
                                       255, 255, 102, 0), // Màu cam như hình
                                 ),

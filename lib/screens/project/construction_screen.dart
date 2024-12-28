@@ -51,7 +51,7 @@ class Construction extends StatelessWidget {
           approved: '07',
           processing: '21 Nov',
           status: 'Normal',
-          progress: 0.7),
+          progress: 0.75),
       PlanItem(
           title: 'Fit Out',
           total: '20',
@@ -99,34 +99,32 @@ class Construction extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70, // Điều chỉnh chiều cao của AppBar
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leadingWidth: 70,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 0), // Thêm padding cho leading
-          child: IconButton(
-            icon: CircleAvatar(
-              radius: 35, // Điều chỉnh bán kính của avatar
-              backgroundImage:
-                  AssetImage('assets/Avata/avata1.png'), // Hình avatar
-              backgroundColor: Colors.transparent, // Màu nền trong suốt
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.customercate);
-            },
+          padding: const EdgeInsets.only(left: 20),
+          child: CircleAvatar(
+            radius: 50,
+            backgroundImage: AssetImage('assets/Avata/avata1.png'),
+            backgroundColor: Colors.transparent,
           ),
         ),
+
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'PROJECT NAME',
+              'Project Timeline',
               style: TextStyle(
                 color: Color.fromARGB(203, 255, 0, 0),
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
             Text(
-              'Customer Name',
+              'Customer name',
               style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: const Color(0xFF17244A),
                 fontSize: 20,
               ),
             ),
@@ -161,44 +159,50 @@ class Construction extends StatelessWidget {
 
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60.0),
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
-                borderRadius: BorderRadius.circular(8.0),
+          child: Column(
+            children: [
+              // Đường kẻ ngang
+              Container(
+                width: 366.0, // Chiều rộng của đường kẻ
+                height: 0.75, // Chiều cao của đường kẻ
+                color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
               ),
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Container(
+                  width: 366.0,
+                  height: 34.5,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFD9D9D9).withOpacity(0.28),
+                    borderRadius: BorderRadius.circular(6.0),
                   ),
-                  Expanded(
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        hintText: 'Search...',
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(color: Colors.grey),
+                  child: Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
                       ),
-                      onChanged: (value) {
-                        // Thực hiện logic tìm kiếm ở đây
-                      },
-                    ),
+                      Expanded(
+                        child: TextField(
+                          decoration: const InputDecoration(
+                            hintText: 'Search...',
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(color: Colors.grey),
+                          ),
+                          onChanged: (value) {
+                            // Thực hiện logic tìm kiếm ở đây
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  // IconButton(
-                  //   icon: const Icon(Icons.clear, color: Colors.grey),
-                  //   onPressed: () {
-                  //     // Xóa nội dung tìm kiếm
-                  //   },
-                  // ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -221,7 +225,7 @@ class Construction extends StatelessWidget {
                         style: TextStyle(
                           fontSize: constraints.maxWidth * 0.06,
                           fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                       ),
                     );
@@ -241,8 +245,7 @@ class Construction extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: const Color.fromRGBO(
-                              20, 30, 48, 1), // Màu nền của thẻ đầu tiên
+                          color: const Color(0xFF17244A),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -344,8 +347,7 @@ class Construction extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 243, 79, 57), // Màu nền của thẻ thứ hai
+                          color: const Color(0xFFEF5C3B),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -447,8 +449,7 @@ class Construction extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 243, 79, 57), // Màu nền của thẻ thứ hai
+                          color: const Color(0xFFEF5C3B),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -550,8 +551,7 @@ class Construction extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 16),
-
-                // Tiêu đề cho Ongoing Projects
+                // Tiêu đề cho To-Do List
                 LayoutBuilder(
                   builder: (context, constraints) {
                     return Container(
@@ -563,17 +563,16 @@ class Construction extends StatelessWidget {
                           fontSize: constraints.maxWidth *
                               0.05, // Điều chỉnh font chữ
                           fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                       ),
                     );
                   },
                 ),
                 const SizedBox(height: 8),
-
                 // Danh sách cuộn dọc
                 Container(
-                  height: 300.0, // Set a fixed height for the container
+                  height: 400.0, // Set a fixed height for the container
                   padding:
                       const EdgeInsets.all(8.0), // Padding inside the border
                   decoration: BoxDecoration(
@@ -624,8 +623,7 @@ class Construction extends StatelessWidget {
                                           style: TextStyle(
                                             fontSize: fontSizeTitle,
                                             fontWeight: FontWeight.bold,
-                                            color: const Color.fromARGB(
-                                                255, 0, 0, 0),
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                         const SizedBox(height: 2),
@@ -633,6 +631,7 @@ class Construction extends StatelessWidget {
                                           'Total: ${project.total}',
                                           style: TextStyle(
                                             fontSize: fontSizeText,
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                         const SizedBox(height: 2),
@@ -640,6 +639,7 @@ class Construction extends StatelessWidget {
                                           'Total Complete: ${project.approved}',
                                           style: TextStyle(
                                             fontSize: fontSizeText,
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                         const SizedBox(height: 2),
@@ -647,6 +647,7 @@ class Construction extends StatelessWidget {
                                           'Due On: ${project.processing}',
                                           style: TextStyle(
                                             fontSize: fontSizeText,
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                         const SizedBox(height: 2),
@@ -655,7 +656,8 @@ class Construction extends StatelessWidget {
                                             const Text(
                                               'Status: ',
                                               style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
+                                                color: const Color(0xFF17244A),
+                                              ),
                                             ),
                                             Text(
                                               project
@@ -663,7 +665,6 @@ class Construction extends StatelessWidget {
                                               style: TextStyle(
                                                 color: _getStatusColor(project
                                                     .status), // Gọi hàm đổi màu
-                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                           ],
@@ -686,7 +687,7 @@ class Construction extends StatelessWidget {
                                           '${(project.progress * 100).toStringAsFixed(0)}%',
                                           style: const TextStyle(
                                             fontSize: 20,
-                                            fontWeight: FontWeight.bold,
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                         progressColor: const Color.fromARGB(
@@ -696,98 +697,6 @@ class Construction extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 15),
-                // Tiêu đề cho To-Do List
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 9.0),
-                      child: Text(
-                        'To-Do List',
-                        style: TextStyle(
-                          fontSize: constraints.maxWidth *
-                              0.05, // Điều chỉnh font chữ
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(height: 8),
-                // Danh sách cuộn dọc
-                Container(
-                  height: 300.0, // Set a fixed height for the container
-                  padding:
-                      const EdgeInsets.all(8.0), // Padding inside the border
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color:
-                          const Color.fromARGB(0, 33, 149, 243), // Border color
-                      width: 2.0, // Border width
-                    ),
-                    borderRadius:
-                        BorderRadius.circular(10.0), // Rounded corners
-                  ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: todoitems.map((todo) {
-                        return LayoutBuilder(
-                          builder: (context, constraints) {
-                            final double fontSizeContent =
-                                constraints.maxWidth *
-                                    0.045; // Font size for content
-                            final double fontSizeDate = constraints.maxWidth *
-                                0.04; // Font size for date
-                            return Container(
-                              margin: const EdgeInsets.all(10),
-                              padding: const EdgeInsets.all(10),
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          todo.content,
-                                          style: TextStyle(
-                                            fontSize: fontSizeContent,
-                                            color: const Color.fromARGB(
-                                                255, 0, 0, 0),
-                                          ),
-                                          softWrap: true,
-                                        ),
-                                        Text(
-                                          'Due on: ${todo.date}',
-                                          style: TextStyle(
-                                            fontSize: fontSizeDate,
-                                            color: const Color.fromARGB(
-                                                255, 0, 0, 0),
-                                          ),
-                                          softWrap: true,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SvgPicture.asset(
-                                    'assets/Icon/check1.svg',
-                                    width: 24.0,
-                                    height: 24.0,
-                                  )
                                 ],
                               ),
                             );

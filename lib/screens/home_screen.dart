@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'Tên khách hàng',
           style: TextStyle(
             fontSize: 24,
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: const Color(0xFF17244A),
           ),
         ),
         centerTitle: true,
@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -355,7 +355,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -514,7 +514,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -579,7 +579,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),

@@ -70,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Chat(),
     Product(),
     CustomerCare(),
+    InformationScreen()
   ];
 
   void onItemTapped(int index) {

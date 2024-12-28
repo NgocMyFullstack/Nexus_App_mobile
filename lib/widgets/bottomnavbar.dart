@@ -13,8 +13,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    BottomNavigationBar(
+    return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
       type: BottomNavigationBarType.fixed,
@@ -56,5 +55,4 @@ class BottomNavBar extends StatelessWidget {
       ],
     );
   }
-
 }

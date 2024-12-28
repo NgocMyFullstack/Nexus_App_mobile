@@ -1,3 +1,5 @@
+import 'package:db_app/main.dart';
+
 import '../../routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,10 +30,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             height: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              // border: Border.all(
-              //   color: const Color.fromARGB(255, 255, 255, 255),
-              //   width: 1,
-              // ),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
@@ -136,10 +134,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         onChanged: (value) {
-                          if (!RegExp(r'^[a-zA-Z0-9._%+-]+@gmail\.com$')
-                              .hasMatch(value)) {
-                            print('Vui lòng nhập đúng địa chỉ Gmail!');
-                          }
+                          // if (!RegExp(r'^[a-zA-Z0-9._%+-]+@gmail\.com$')
+                          //     .hasMatch(value)) {
+                          //   print('Vui lòng nhập đúng địa chỉ Gmail!');
+                          // }
                         },
                       ),
                       SizedBox(height: 16),
@@ -312,7 +310,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         onPressed: () {
-                          print('Sign Up clicked');
+                          showSuccessDialog(context);
                         },
                         child: Text('Sign Up'),
                       ),
@@ -350,8 +348,85 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: SignUpScreen(),
-  ));
+void showSuccessDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return LoginSuccessDialog();
+    },
+  );
+}
+
+class LoginSuccessDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Create Account',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 2, 2, 2),
+              ),
+            ),
+            SizedBox(height: 16),
+            Icon(
+              Icons.check_circle_outline,
+              size: 48,
+              color: const Color.fromARGB(255, 255, 0, 0),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Successful!!!',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 255, 0, 0),
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Thanks You',
+              style: TextStyle(
+                fontSize: 16,
+                color: const Color.fromARGB(255, 0, 0, 0),
+              ),
+            ),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => MyHomePage(initialIndex: 0),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigo,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text(
+                'OK',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

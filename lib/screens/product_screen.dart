@@ -40,7 +40,7 @@ class Product extends StatelessWidget {
           'Tên khách hàng',
           style: TextStyle(
             fontSize: 24,
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: const Color(0xFF17244A),
           ),
         ),
         centerTitle: true,
@@ -73,7 +73,7 @@ class Product extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                       ),
                     ),

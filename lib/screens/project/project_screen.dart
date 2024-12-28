@@ -99,34 +99,32 @@ class _ProjectScreenState extends State<ProjectScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70, // Điều chỉnh chiều cao của AppBar
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leadingWidth: 70,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 0), // Thêm padding cho leading
-          child: IconButton(
-            icon: CircleAvatar(
-              radius: 35, // Điều chỉnh bán kính của avatar
-              backgroundImage:
-                  AssetImage('assets/Avata/avata1.png'), // Hình avatar
-              backgroundColor: Colors.transparent, // Màu nền trong suốt
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.customercate);
-            },
+          padding: const EdgeInsets.only(left: 20),
+          child: CircleAvatar(
+            radius: 10,
+            backgroundImage: AssetImage('assets/Avata/avata1.png'),
+            backgroundColor: Colors.transparent,
           ),
         ),
+
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'PROJECT NAME',
+              'Project Name',
               style: TextStyle(
                 color: Color.fromARGB(203, 255, 0, 0),
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
             Text(
-              'Customer Name',
+              'Customer name',
               style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: const Color(0xFF17244A),
                 fontSize: 20,
               ),
             ),
@@ -158,6 +156,20 @@ class _ProjectScreenState extends State<ProjectScreen> {
             ),
           ),
         ],
+
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(10.0),
+          child: Column(
+            children: [
+              // Đường kẻ ngang
+              Container(
+                width: 366.0, // Chiều rộng của đường kẻ
+                height: 0.75, // Chiều cao của đường kẻ
+                color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
+              ),
+            ],
+          ),
+        ),
       ),
       drawer: const CustomDrawer(),
       body: SafeArea(
@@ -174,11 +186,11 @@ class _ProjectScreenState extends State<ProjectScreen> {
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 9.0),
                       child: Text(
-                        'Yesterdays Project Gallery',
+                        "Yesterday's Project Gallery",
                         style: TextStyle(
                           fontSize: constraints.maxWidth * 0.06,
                           fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                       ),
                     );
@@ -193,36 +205,17 @@ class _ProjectScreenState extends State<ProjectScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: InstaImageViewer(
-                              child: Image.asset(
-                                  'assets/images/project_img_1.png'),
+                        for (var i = 1; i <= 4; i++)
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: InstaImageViewer(
+                                child: Image.asset(
+                                    'assets/images/project_img_$i.png'),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: InstaImageViewer(
-                              child: Image.asset(
-                                  'assets/images/project_img_2.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: InstaImageViewer(
-                              child: Image.asset(
-                                  'assets/images/project_img_3.png'),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -284,7 +277,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                             fontSize: fontSizeTitle,
                                             fontWeight: FontWeight.bold,
                                             color: const Color.fromARGB(
-                                                255, 0, 0, 0),
+                                                255, 255, 0, 0),
                                           ),
                                         ),
                                         const SizedBox(height: 2),
@@ -322,7 +315,6 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                           '${(project.progress * 100).toStringAsFixed(0)}%',
                                           style: const TextStyle(
                                             fontSize: 20,
-                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         progressColor: const Color.fromARGB(
@@ -350,7 +342,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 9.0),
                       child: Text(
-                        'To-Do List',
+                        'To do list today',
                         style: TextStyle(
                           fontSize: constraints.maxWidth *
                               0.05, // Điều chỉnh font chữ
@@ -362,6 +354,13 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   },
                 ),
                 const SizedBox(height: 8),
+
+                Container(
+                  width: 400.0,
+                  height: 0.75,
+                  color: const Color(0xFFD4D4D4),
+                ),
+
                 // Danh sách cuộn dọc
 
                 Container(
@@ -442,7 +441,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 9.0),
                       child: Text(
-                        'Todays Processed Images',
+                        "Today's Processed Images",
                         style: TextStyle(
                           fontSize: constraints.maxWidth *
                               0.05, // Điều chỉnh font chữ
@@ -454,6 +453,11 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   },
                 ),
                 const SizedBox(height: 10),
+                Container(
+                  width: 400.0,
+                  height: 0.75,
+                  color: const Color(0xFFD4D4D4),
+                ),
 
                 Column(
                   children: tasks.map((task) {

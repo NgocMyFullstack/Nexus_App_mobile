@@ -71,7 +71,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
         title: const Text(
           'Finance',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: const Color(0xFF17244A),
             fontSize: 18,
           ),
         ),
@@ -174,7 +174,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                       style: TextStyle(
                         fontSize: largeFontSize,
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -216,7 +216,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                 style: TextStyle(
                                   fontSize: smallFontSize,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               SizedBox(height: 2),
@@ -236,7 +236,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               progressColor:
@@ -266,7 +266,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                 style: TextStyle(
                                   fontSize: smallFontSize,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               SizedBox(height: 2),
@@ -286,7 +286,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                       style: TextStyle(
                         fontSize: largeFontSize,
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -326,7 +326,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                           style: TextStyle(
                             fontSize: largeFontSize,
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            color: const Color(0xFF17244A),
                           ),
                         ),
                       ),
@@ -379,17 +379,15 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                             todo.content,
                                             style: TextStyle(
                                               fontSize: fontSizeContent,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 0, 0),
+                                              color: const Color(0xFF17244A),
                                             ),
                                             softWrap: true,
                                           ),
                                           Text(
-                                            'Due on: ${todo.date}',
+                                            'Create Date: ${todo.date}',
                                             style: TextStyle(
                                               fontSize: fontSizeDate,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 0, 0),
+                                              color: const Color(0xFF17244A),
                                             ),
                                             softWrap: true,
                                           ),
@@ -411,7 +409,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                           'file',
                                           style: TextStyle(
                                             fontSize: 12.0,
-                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            color: const Color(0xFF17244A),
                                           ),
                                         ),
                                       ],
@@ -439,7 +437,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                           style: TextStyle(
                             fontSize: largeFontSize,
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            color: const Color(0xFF17244A),
                           ),
                         ),
                       ),
