@@ -149,7 +149,7 @@ class _InformationScreenState extends State<InformationScreen> {
           ),
         ),
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

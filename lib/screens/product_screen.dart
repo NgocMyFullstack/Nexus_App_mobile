@@ -55,7 +55,7 @@ class Product extends StatelessWidget {
           },
         ),
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: Center(
         child: Padding(
             padding: const EdgeInsets.all(8.0),

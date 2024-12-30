@@ -56,7 +56,7 @@ class CustomerCare extends StatelessWidget {
           },
         ),
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(26.0),
         child: Column(

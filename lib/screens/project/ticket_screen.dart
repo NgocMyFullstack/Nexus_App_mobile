@@ -123,7 +123,7 @@ class _TicketScreenState extends State<TicketScreen> {
           ),
         ),
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

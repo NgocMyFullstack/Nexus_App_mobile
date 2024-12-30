@@ -111,7 +111,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
           ),
         ],
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

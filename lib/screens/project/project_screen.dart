@@ -171,7 +171,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
           ),
         ),
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

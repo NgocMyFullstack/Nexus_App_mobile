@@ -33,11 +33,11 @@ class BottomNavBar extends StatelessWidget {
             width: 25,
             height: 25,
           ),
-          label: 'Home ',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset('assets/Icon/Case.svg', width: 25, height: 25),
-          label: 'ProJect',
+          label: 'Project',
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset('assets/Icon/Message.svg',
@@ -50,7 +50,7 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset('assets/Icon/User.svg', width: 25, height: 25),
-          label: 'Support ',
+          label: 'Support',
         ),
       ],
     );

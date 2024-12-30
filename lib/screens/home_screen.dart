@@ -2,9 +2,7 @@ import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
-// Model to represent a project with a list of image paths
 class Project {
   final String name;
   final List<String> imagePaths;
@@ -20,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // List of projects, each with its own images
   final List<Project> projects = [
     Project(
       name: 'D1 Mension',
@@ -88,11 +85,26 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
   ];
+
+  late int _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = 0; // Màn hình mặc định khi bắt đầu
+  }
+
   void _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
       throw 'Could not launch $url';
     }
+  }
+
+  void onSelectScreen(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -142,7 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ],
-        // Đường kẻ ngang
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: Column(
@@ -156,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(onSelectScreen: onSelectScreen),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

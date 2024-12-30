@@ -1,6 +1,9 @@
+import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
 import 'package:db_app/screens/project/project_product_screen.dart';
+import 'package:db_app/screens/project/ticket_screen.dart';
+import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'routes/app_routes.dart';
 import 'widgets/bottomnavbar.dart';
@@ -61,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.initialIndex; // Khởi tạo từ tham số
+    _selectedIndex = widget.initialIndex;
   }
 
   final List<Widget> _screens = const [
@@ -70,7 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
     Chat(),
     Product(),
     CustomerCare(),
-    InformationScreen()
+  ];
+
+  final List<Widget> _specialScreens = const [
+    InformationScreen(),
+    Construction(),
+    FinanceScreen(),
+    ProjectProductScreen(),
+    TicketScreen(), // Đây là màn hình Ticket
   ];
 
   void onItemTapped(int index) {
@@ -79,14 +89,36 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void onSelectScreen(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final bool isSpecialScreen =
+        _selectedIndex >= 5; // Kiểm tra nếu là màn hình đặc biệt
+    final bool isTicketScreen =
+        _selectedIndex == 9; // Kiểm tra nếu là TicketScreen
+
     return Scaffold(
-      body: _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: _selectedIndex,
-        onTap: onItemTapped,
+      appBar: AppBar(
+        title: const Text('App Title'),
       ),
+      // Drawer luôn hiển thị, không bị ảnh hưởng
+      drawer: CustomDrawer(onSelectScreen: onSelectScreen),
+      body: isSpecialScreen
+          ? _specialScreens[_selectedIndex - 5] // Hiển thị màn hình đặc biệt
+          : _screens[_selectedIndex], // Hiển thị màn hình chính
+      // Ẩn BottomNavigationBar khi ở TicketScreen, nhưng không ẩn Drawer
+      bottomNavigationBar: isTicketScreen
+          ? null
+          : BottomNavBar(
+              currentIndex:
+                  isSpecialScreen ? 0 : _selectedIndex, // Ẩn tương ứng
+              onTap: onItemTapped,
+            ),
     );
   }
 }
