@@ -40,8 +40,7 @@ class CustomerCare extends StatelessWidget {
         title: const Text(
           'Tên khách hàng',
           style: TextStyle(
-            fontSize: 24,
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: const Color(0xFF17244A),
           ),
         ),
         centerTitle: true,

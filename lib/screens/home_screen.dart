@@ -100,48 +100,60 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,
-        actions: [
-          Builder(
-            builder: (context) => Container(
-              margin: const EdgeInsets.only(right: 16.0),
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: IconButton(
-                  icon: SvgPicture.asset(
-                    'assets/Icon/Burger.svg',
-                    width: 30,
-                    height: 30,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer(); // Mở drawer
-                  },
+        centerTitle: true,
+        leading: Builder(
+          builder: (context) => Container(
+            margin: const EdgeInsets.only(left: 5.5),
+            width: 70,
+            height: 70,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: IconButton(
+                icon: SvgPicture.asset(
+                  'assets/Icon/Burger.svg',
+                  width: 30,
+                  height: 30,
                 ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
               ),
             ),
           ),
-        ],
+        ),
         title: const Text(
           'Tên khách hàng',
           style: TextStyle(
-            fontSize: 24,
-            color: const Color(0xFF17244A),
+            color: Color(0xFF17244A),
           ),
         ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/Icon/Bell.svg',
-            width: 30,
-            height: 30,
-            fit: BoxFit.contain,
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/Icon/Bell.svg',
+              width: 30,
+              height: 30,
+              fit: BoxFit.contain,
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
           ),
-          onPressed: () {
-            Scaffold.of(context).openDrawer(); // Mở drawer
-          },
+        ],
+        // Đường kẻ ngang
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(0),
+          child: Column(
+            children: [
+              Container(
+                width: 366.0,
+                height: 0.5,
+                color: const Color(0xFFD4D4D4),
+              ),
+            ],
+          ),
         ),
       ),
       drawer: const CustomDrawer(),
@@ -158,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'PRODUCT',
+                      'PROJECT',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

@@ -72,7 +72,6 @@ class _FinanceScreenState extends State<FinanceScreen> {
           'Finance',
           style: TextStyle(
             color: const Color(0xFF17244A),
-            fontSize: 18,
           ),
         ),
         actions: [

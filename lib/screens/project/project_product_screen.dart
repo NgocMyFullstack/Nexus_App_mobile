@@ -80,8 +80,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
         title: const Text(
           'Pre Contruction',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
-            fontSize: 18,
+            color: const Color(0xFF17244A),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -111,54 +110,6 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
             ),
           ),
         ],
-        // bottom: PreferredSize(
-        //   preferredSize: const Size.fromHeight(60.0),
-        //   child: Column(
-        //     children: [
-        //       // Đường kẻ ngang
-        //       Container(
-        //         width: 366.0, // Chiều rộng của đường kẻ
-        //         height: 0.75, // Chiều cao của đường kẻ
-        //         color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
-        //       ),
-        //       Padding(
-        //         padding:
-        //             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        //         child: Container(
-        //           width: 366.0,
-        //           height: 34.5,
-        //           decoration: BoxDecoration(
-        //             color: const Color(0xFFD9D9D9).withOpacity(0.28),
-        //             borderRadius: BorderRadius.circular(6.0),
-        //           ),
-        //           child: Row(
-        //             children: [
-        //               const Padding(
-        //                 padding: EdgeInsets.symmetric(horizontal: 8.0),
-        //                 child: Icon(
-        //                   Icons.search,
-        //                   color: Colors.grey,
-        //                 ),
-        //               ),
-        //               Expanded(
-        //                 child: TextField(
-        //                   decoration: const InputDecoration(
-        //                     hintText: 'Search...',
-        //                     border: InputBorder.none,
-        //                     hintStyle: TextStyle(color: Colors.grey),
-        //                   ),
-        //                   onChanged: (value) {
-        //                     // Thực hiện logic tìm kiếm ở đây
-        //                   },
-        //                 ),
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ),
       drawer: const CustomDrawer(),
       body: SingleChildScrollView(
@@ -243,7 +194,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                                         style: TextStyle(
                                           fontSize: screenWidth * 0.045,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.black,
+                                          color: const Color(0xFF17244A),
                                         ),
                                       ),
                                       Text(
@@ -274,8 +225,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                                 '70%',
                                 style: TextStyle(
                                   fontSize: mediumFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                               progressColor:
@@ -296,7 +246,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                                 style: TextStyle(
                                   fontSize: smallFontSize * 1.4,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  color: const Color(0xFF17244A),
                                 ),
                               ),
                             ],
@@ -318,7 +268,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                           style: TextStyle(
                             fontSize: largeFontSize,
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            color: const Color(0xFF17244A),
                           ),
                         ),
                       ),
@@ -535,7 +485,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                           style: TextStyle(
                             fontSize: largeFontSize,
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            color: const Color(0xFF17244A),
                           ),
                         ),
                       ),

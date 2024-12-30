@@ -71,8 +71,7 @@ class _InformationScreenState extends State<InformationScreen> {
         title: const Text(
           'Information',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
-            fontSize: 18,
+            color: const Color(0xFF17244A),
           ),
         ),
         actions: [
@@ -174,7 +173,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       style: TextStyle(
                         fontSize: largeFontSize,
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -285,7 +284,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       style: TextStyle(
                         fontSize: largeFontSize,
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 0, 0),
+                        color: const Color(0xFF17244A),
                       ),
                     ),
                   ),
@@ -325,7 +324,7 @@ class _InformationScreenState extends State<InformationScreen> {
                           style: TextStyle(
                             fontSize: largeFontSize,
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            color: const Color(0xFF17244A),
                           ),
                         ),
                       ),
@@ -438,7 +437,7 @@ class _InformationScreenState extends State<InformationScreen> {
                           style: TextStyle(
                             fontSize: largeFontSize,
                             fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                            color: const Color(0xFF17244A),
                           ),
                         ),
                       ),

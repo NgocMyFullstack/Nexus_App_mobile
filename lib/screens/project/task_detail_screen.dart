@@ -774,7 +774,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
         title: const Text(
           'TICKET',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: const Color(0xFF17244A),
             fontSize: 18,
           ),
         ),
@@ -792,7 +792,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                   'Location',
                   style: TextStyle(
                     fontSize: 21,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color(0xFF17244A),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -829,7 +829,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                   'Task Details',
                   style: TextStyle(
                     fontSize: 21,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color(0xFF17244A),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -847,7 +847,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                         'Floor',
                         style: TextStyle(
                           fontSize: 21,
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                         overflow: TextOverflow.ellipsis,
                         softWrap: false,
@@ -910,7 +910,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                         'Department',
                         style: TextStyle(
                           fontSize: 21,
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                         overflow: TextOverflow
                             .ellipsis, // Cắt ngắn nếu không đủ không gian
@@ -968,7 +968,8 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
               ),
               GestureDetector(
                   onTap: () {
-                    if (_selectedDepartment == '' || _selectedDepartment == null) {
+                    if (_selectedDepartment == '' ||
+                        _selectedDepartment == null) {
                       QuickAlert.show(
                         context: context,
                         type: QuickAlertType.warning,
@@ -993,7 +994,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                   'List Ticket',
                   style: TextStyle(
                     fontSize: 21,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color(0xFF17244A),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -1104,15 +1105,15 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                    if (_selectedDepartment == '' || _selectedDepartment == null) {
-                      QuickAlert.show(
-                        context: context,
-                        type: QuickAlertType.warning,
-                        text: 'Vui lòng điền tên khu vực lỗi',
-                      );
-                    } else {
-                      _openEditDialog();
-                    }
+                if (_selectedDepartment == '' || _selectedDepartment == null) {
+                  QuickAlert.show(
+                    context: context,
+                    type: QuickAlertType.warning,
+                    text: 'Vui lòng điền tên khu vực lỗi',
+                  );
+                } else {
+                  _openEditDialog();
+                }
               },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),

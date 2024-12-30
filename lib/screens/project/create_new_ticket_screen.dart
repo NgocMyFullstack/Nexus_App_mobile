@@ -444,8 +444,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
         title: const Text(
           'Create New Ticket',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
-            fontWeight: FontWeight.bold,
+            color: const Color(0xFF17244A),
           ),
         ),
       ),
@@ -462,7 +461,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                   'Location',
                   style: TextStyle(
                     fontSize: 21,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color(0xFF17244A),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -499,7 +498,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                   'Task Details',
                   style: TextStyle(
                     fontSize: 21,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color(0xFF17244A),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -517,7 +516,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                         'Floor',
                         style: TextStyle(
                           fontSize: 21,
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                         overflow: TextOverflow.ellipsis,
                         softWrap: false,
@@ -583,7 +582,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                         'Department',
                         style: TextStyle(
                           fontSize: 21,
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF17244A),
                         ),
                         overflow: TextOverflow
                             .ellipsis, // Cắt ngắn nếu không đủ không gian
@@ -645,7 +644,8 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
               GestureDetector(
                   onTap: () {
                     // ignore: unnecessary_null_comparison
-                    if (_selectedDepartment == '' || _selectedDepartment == null) {
+                    if (_selectedDepartment == '' ||
+                        _selectedDepartment == null) {
                       QuickAlert.show(
                         context: context,
                         type: QuickAlertType.warning,
@@ -671,7 +671,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
                   'List Ticket',
                   style: TextStyle(
                     fontSize: 21,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color(0xFF17244A),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -781,15 +781,15 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                    if (_selectedDepartment == '' || _selectedDepartment == null) {
-                      QuickAlert.show(
-                        context: context,
-                        type: QuickAlertType.warning,
-                        text: 'Vui lòng điền tên khu vực lỗi',
-                      );
-                    } else {
-                      _openEditDialog();
-                    }
+                if (_selectedDepartment == '' || _selectedDepartment == null) {
+                  QuickAlert.show(
+                    context: context,
+                    type: QuickAlertType.warning,
+                    text: 'Vui lòng điền tên khu vực lỗi',
+                  );
+                } else {
+                  _openEditDialog();
+                }
               },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
