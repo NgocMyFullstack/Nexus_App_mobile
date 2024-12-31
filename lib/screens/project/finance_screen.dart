@@ -351,12 +351,21 @@ class _FinanceScreenState extends State<FinanceScreen> {
                   ),
 
                   const SizedBox(height: 10),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 0.75,
-                    color: const Color(0xFFD4D4D4),
+                  PreferredSize(
+                    preferredSize: const Size.fromHeight(10.0),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 0.75,
+                            color: const Color(0xFFD4D4D4),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-
                   // buttom
                   const SizedBox(height: 20),
                   Center(
@@ -392,9 +401,9 @@ class _FinanceScreenState extends State<FinanceScreen> {
                           return LayoutBuilder(
                             builder: (context, constraints) {
                               final double fontSizeContent =
-                                  constraints.maxWidth * 0.035;
+                                  constraints.maxWidth * 0.03;
                               final double fontSizeDate =
-                                  constraints.maxWidth * 0.025;
+                                  constraints.maxWidth * 0.03;
 
                               final bool isPaymentDue =
                                   todo.content == 'Đợt Dự Thu';
@@ -404,7 +413,10 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                 padding: const EdgeInsets.all(5),
                                 color: const Color.fromARGB(42, 255, 255, 255),
                                 child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .center, // Center vertically
                                   children: [
+                                    // Icon Section
                                     Column(
                                       children: [
                                         SvgPicture.asset(
@@ -414,7 +426,9 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(width: 1),
+                                    const SizedBox(width: 5),
+
+                                    // Content Section
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -435,57 +449,57 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(width: 0.5),
+
                                     Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 0),
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                ' ${todo.date}',
-                                                style: TextStyle(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: fontSizeDate,
-                                                  color: isPaymentDue
-                                                      ? const Color(0xFFFF8903)
-                                                      : const Color(0xFFEF5C3B),
-                                                ),
-                                                softWrap: false,
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              '${todo.date}',
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontSize: fontSizeDate,
+                                                color: isPaymentDue
+                                                    ? const Color(0xFFFF8903)
+                                                    : const Color(0xFFEF5C3B),
                                               ),
+                                              textAlign: TextAlign.right,
+                                              overflow: TextOverflow.visible,
+                                              softWrap: false,
                                             ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 5),
-                                              child: Text(
-                                                ' | ',
-                                                style: TextStyle(
-                                                  fontSize: fontSizeDate * 1.6,
-                                                  color: const Color.fromARGB(
-                                                      143, 155, 155, 155),
-                                                ),
-                                                softWrap: true,
+                                          ),
+                                          SizedBox(width: 4.0),
+                                          Text(
+                                            ' | ',
+                                            style: TextStyle(
+                                              fontSize: fontSizeDate * 1.5,
+                                              color: const Color.fromARGB(
+                                                  143, 155, 155, 155),
+                                            ),
+                                            softWrap: true,
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              '${todo.money}',
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontSize: fontSizeDate,
+                                                color: isPaymentDue
+                                                    ? const Color(0xFFFF8903)
+                                                    : const Color(0xFFEF5C3B),
                                               ),
+                                              softWrap:
+                                                  true, // Allow wrapping if necessary
+                                              textAlign: TextAlign
+                                                  .left, // Align to the left
+                                              overflow: TextOverflow
+                                                  .ellipsis, // Truncate if needed
                                             ),
-                                            Expanded(
-                                              child: Text(
-                                                ' ${todo.money}',
-                                                style: TextStyle(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: fontSizeDate,
-                                                  color: isPaymentDue
-                                                      ? const Color(0xFFFF8903)
-                                                      : const Color(0xFFEF5C3B),
-                                                ),
-                                                softWrap: true,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -497,8 +511,6 @@ class _FinanceScreenState extends State<FinanceScreen> {
                       ),
                     ),
                   ),
-
-                  const SizedBox(height: 16),
                 ],
               );
             },
@@ -517,10 +529,11 @@ class CustomToggleButtons extends StatefulWidget {
 }
 
 class _CustomToggleButtonsState extends State<CustomToggleButtons> {
-  int _selectedIndex = 2; // Mặc định chọn "Monthly"
+  int _selectedIndex = 2; // Default "Monthly" selected
 
   final List<String> _options = ["Daily", "Weekly", "Monthly"];
   final double largeFontSize = 16.0;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -528,8 +541,11 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
       children: List.generate(_options.length, (index) {
         final isSelected = _selectedIndex == index;
         return Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: 8), // Khoảng cách giữa các nút
+          padding: EdgeInsets.symmetric(
+            horizontal: index == 1
+                ? 35.0
+                : 0.0, // Apply padding only to the middle element
+          ),
           child: GestureDetector(
             onTap: () {
               setState(() {
@@ -542,14 +558,14 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
                 color: isSelected
                     ? const Color(0xFF17244A)
                     : const Color.fromARGB(0, 255, 255, 255),
-                borderRadius: BorderRadius.circular(20), // Bo góc cho từng nút
+                borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
                 _options[index],
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: largeFontSize * 0.8,
-                  color: isSelected ? Colors.white : Colors.black,
+                  color: isSelected ? Colors.white : const Color(0xFF17244A),
                   fontWeight: FontWeight.w500,
                 ),
               ),

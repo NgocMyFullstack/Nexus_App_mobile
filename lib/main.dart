@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final bool isSpecialScreen = _selectedIndex >= 5;
-    final bool isTicketScreen = _selectedIndex == 9;
+    final bool isTicketScreen = _selectedIndex >= 8;
 
     return Scaffold(
       appBar: AppBar(
