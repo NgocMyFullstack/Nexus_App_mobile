@@ -192,7 +192,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                               '1.000.000.000',
                               style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w600,
                                 fontSize: largeFontSize * 1.5,
                                 color: Color(0xFFEF5C3B),
                               ),
@@ -200,7 +200,8 @@ class _FinanceScreenState extends State<FinanceScreen> {
                             Text(
                               '   VND',
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w600,
                                 fontSize: largeFontSize * 0.8,
                                 color: Color(0xFFEF5C3B),
                               ),
@@ -219,7 +220,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                         child: Container(
                           margin: const EdgeInsets.all(10),
                           padding: const EdgeInsets.fromLTRB(17, 10, 17, 10),
-                          height: 100,
+                          width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
@@ -256,15 +257,17 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                   Text(
                                     '300M ',
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: largeFontSize * 1.6,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: largeFontSize * 1.5,
                                       color: const Color(0xFF00BBFF),
                                     ),
                                   ),
                                   Text(
                                     ' VND ',
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: largeFontSize * 0.8,
                                       color: const Color(0xFF00BBFF),
                                     ),
@@ -280,7 +283,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                         child: Container(
                           margin: const EdgeInsets.all(10),
                           padding: const EdgeInsets.fromLTRB(17, 10, 17, 10),
-                          height: 100,
+                          width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
@@ -317,15 +320,17 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                   Text(
                                     '200M ',
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: largeFontSize * 1.6,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: largeFontSize * 1.5,
                                       color: const Color(0xFF223F96),
                                     ),
                                   ),
                                   Text(
                                     ' VND ',
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: largeFontSize * 0.8,
                                       color: const Color(0xFF223F96),
                                     ),
@@ -381,12 +386,10 @@ class _FinanceScreenState extends State<FinanceScreen> {
                           return LayoutBuilder(
                             builder: (context, constraints) {
                               final double fontSizeContent =
-                                  constraints.maxWidth *
-                                      0.035; // Font size for content
-                              final double fontSizeDate = constraints.maxWidth *
-                                  0.03; // Font size for date
+                                  constraints.maxWidth * 0.035;
+                              final double fontSizeDate =
+                                  constraints.maxWidth * 0.025;
 
-                              // Kiểm tra nếu "content" là "Đợt Dự Thu"
                               final bool isPaymentDue =
                                   todo.content == 'Đợt Dự Thu';
 
@@ -396,7 +399,6 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                 color: const Color.fromARGB(42, 255, 255, 255),
                                 child: Row(
                                   children: [
-                                    // Biểu tượng tiền tệ
                                     Column(
                                       children: [
                                         SvgPicture.asset(
@@ -406,8 +408,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(width: 5),
-                                    // Phần hiển thị nội dung
+                                    const SizedBox(width: 1),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -416,59 +417,69 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                           Text(
                                             todo.content,
                                             style: TextStyle(
+                                              fontFamily: 'Poppins',
                                               fontSize: fontSizeContent * 1.1,
                                               color: isPaymentDue
-                                                  ? const Color(
-                                                      0xFFFF8903) // Nếu là "Đợt Dự Thu"
-                                                  : const Color.fromARGB(255, 0,
-                                                      0, 0), // Màu mặc định
+                                                  ? const Color(0xFFFF8903)
+                                                  : const Color.fromARGB(
+                                                      255, 0, 0, 0),
                                             ),
                                             softWrap: true,
                                           ),
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(width: 10),
-                                    // Phần hiển thị ngày và tiền
+                                    const SizedBox(width: 0.5),
                                     Expanded(
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            ' ${todo.date}',
-                                            style: TextStyle(
-                                              fontSize: fontSizeDate,
-                                              color: isPaymentDue
-                                                  ? const Color(
-                                                      0xFFFF8903) // Nếu là "Đợt Dự Thu"
-                                                  : const Color(
-                                                      0xFFEF5C3B), // Màu cũ nếu không phải
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 0),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.baseline,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                ' ${todo.date}',
+                                                style: TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: fontSizeDate,
+                                                  color: isPaymentDue
+                                                      ? const Color(0xFFFF8903)
+                                                      : const Color(0xFFEF5C3B),
+                                                ),
+                                                softWrap: false,
+                                              ),
                                             ),
-                                            softWrap: true,
-                                          ),
-                                          Text(
-                                            ' |',
-                                            style: TextStyle(
-                                              fontSize: fontSizeDate * 1.0,
-                                              color: const Color.fromARGB(
-                                                  143, 155, 155, 155),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5),
+                                              child: Text(
+                                                ' | ',
+                                                style: TextStyle(
+                                                  fontSize: fontSizeDate * 1.6,
+                                                  color: const Color.fromARGB(
+                                                      143, 155, 155, 155),
+                                                ),
+                                                softWrap: true,
+                                              ),
                                             ),
-                                            softWrap: true,
-                                          ),
-                                          Text(
-                                            ' ${todo.money}',
-                                            style: TextStyle(
-                                              fontSize: fontSizeDate,
-                                              color: isPaymentDue
-                                                  ? const Color(
-                                                      0xFFFF8903) // Nếu là "Đợt Dự Thu"
-                                                  : const Color(
-                                                      0xFFEF5C3B), // Màu cũ nếu không phải
+                                            Expanded(
+                                              child: Text(
+                                                ' ${todo.money}',
+                                                style: TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: fontSizeDate,
+                                                  color: isPaymentDue
+                                                      ? const Color(0xFFFF8903)
+                                                      : const Color(0xFFEF5C3B),
+                                                ),
+                                                softWrap: true,
+                                              ),
                                             ),
-                                            softWrap: true,
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -503,7 +514,7 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
   int _selectedIndex = 2; // Mặc định chọn "Monthly"
 
   final List<String> _options = ["Daily", "Weekly", "Monthly"];
-
+  final double largeFontSize = 16.0;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -530,6 +541,8 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
               child: Text(
                 _options[index],
                 style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: largeFontSize * 0.8,
                   color: isSelected ? Colors.white : Colors.black,
                   fontWeight: FontWeight.w500,
                 ),
