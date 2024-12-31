@@ -63,35 +63,39 @@ class _FinanceScreenState extends State<FinanceScreen> {
     ];
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/Icon/Vector2.svg',
-            width: 15.0,
-            height: 15.0,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 19.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Customer Name',
+                style: TextStyle(
+                  color: Color(0xFF17244A),
+                  fontFamily: 'Poppins',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                  height: 1.4,
+                  letterSpacing: 0.5,
+                  textBaseline: TextBaseline.alphabetic,
+                ),
+              ),
+              const Text(
+                'Good Morning',
+                style: TextStyle(
+                  color: Color(0xFFEF5C3B),
+                  fontFamily: 'Poppins',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.normal,
+                  height: 1.42857,
+                  letterSpacing: 0.5,
+                  textBaseline: TextBaseline.alphabetic,
+                ),
+              ),
+            ],
           ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Customer Name',
-              style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(height: 4), // Tạo khoảng cách giữa hai dòng
-            const Text(
-              'Good Morning',
-              style: TextStyle(
-                color: Color(0xFFEF5C3B), // Màu #EF5C3B
-                fontSize: 16,
-              ),
-            ),
-          ],
         ),
         actions: [
           Builder(
@@ -106,13 +110,12 @@ class _FinanceScreenState extends State<FinanceScreen> {
               child: Center(
                 child: IconButton(
                   icon: SvgPicture.asset(
-                    'assets/Icon/Burger.svg',
+                    'assets/Icon/Bell.svg',
                     width: 30.0,
                     height: 30.0,
                   ),
                   onPressed: () {
-                    Scaffold.of(context)
-                        .openDrawer(); // Mở Drawer khi nhấn biểu tượng Burger
+                    Scaffold.of(context).openDrawer();
                   },
                 ),
               ),
@@ -123,47 +126,14 @@ class _FinanceScreenState extends State<FinanceScreen> {
           preferredSize: const Size.fromHeight(10.0),
           child: Column(
             children: [
-              // Đường kẻ ngang
-              Container(
-                width: 366.0, // Chiều rộng của đường kẻ
-                height: 0.75, // Chiều cao của đường kẻ
-                color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 0.75,
+                  color: const Color(0xFFD4D4D4),
+                ),
               ),
-              // Padding(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              //   child: Container(
-              //     width: 366.0,
-              //     height: 34.5,
-              //     decoration: BoxDecoration(
-              //       color: const Color(0xFFD9D9D9).withOpacity(0.28),
-              //       borderRadius: BorderRadius.circular(6.0),
-              //     ),
-              //     child: Row(
-              //       children: [
-              //         const Padding(
-              //           padding: EdgeInsets.symmetric(horizontal: 8.0),
-              //           child: Icon(
-              //             Icons.search,
-              //             color: Colors.grey,
-              //           ),
-              //         ),
-              //         Expanded(
-              //           child: TextField(
-              //             decoration: const InputDecoration(
-              //               hintText: 'Search...',
-              //               border: InputBorder.none,
-              //               hintStyle: TextStyle(color: Colors.grey),
-              //             ),
-              //             onChanged: (value) {
-              //               // Thực hiện logic tìm kiếm ở đây
-              //             },
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -174,19 +144,17 @@ class _FinanceScreenState extends State<FinanceScreen> {
           padding: const EdgeInsets.all(10),
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final double baseWidth = constraints.maxWidth; // Độ rộng màn hình
-              final double smallFontSize = baseWidth * 0.03; // Kích thước nhỏ
-              final double mediumFontSize =
-                  baseWidth * 0.04; // Kích thước trung bình
-              final double largeFontSize = baseWidth * 0.05; // Kích thước lớn
+              final double baseWidth = constraints.maxWidth;
+              final double smallFontSize = baseWidth * 0.03;
+              final double mediumFontSize = baseWidth * 0.04;
+              final double largeFontSize = baseWidth * 0.05;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // tiêu đề project name
                   const SizedBox(height: 6),
                   Container(
-                    width: MediaQuery.of(context).size.width *
-                        0.9, // Chiều rộng là 90% màn hình
+                    width: MediaQuery.of(context).size.width * 0.9,
                     margin: const EdgeInsets.all(10),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -201,21 +169,43 @@ class _FinanceScreenState extends State<FinanceScreen> {
                       ],
                     ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Total project value',
                           style: TextStyle(
-                            fontSize: largeFontSize,
+                            color: Color(0xFF17244A),
+                            fontFamily: 'Poppins',
+                            fontSize: largeFontSize * 0.8,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            height: 1.42857,
+                            letterSpacing: 0.5,
+                            textBaseline: TextBaseline.alphabetic,
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          '1.000.000.000 VND',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: largeFontSize * 1.5,
-                            color: Color(0xFFEF5C3B),
-                          ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              '1.000.000.000',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.bold,
+                                fontSize: largeFontSize * 1.5,
+                                color: Color(0xFFEF5C3B),
+                              ),
+                            ),
+                            Text(
+                              '   VND',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: largeFontSize * 0.8,
+                                color: Color(0xFFEF5C3B),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -247,27 +237,32 @@ class _FinanceScreenState extends State<FinanceScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'đã thanh toán',
+                                'Đã Thanh Toán',
                                 style: TextStyle(
-                                  // Loại bỏ const ở đây
+                                  fontFamily: 'Poppins',
                                   fontSize: largeFontSize * 0.8,
-                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                  fontStyle: FontStyle.normal,
+                                  height: 1.42857,
+                                  letterSpacing: 0.5,
+                                  color: Color(0xFF17244A),
                                 ),
                               ),
-                              const SizedBox(height: 6),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
                                     '300M ',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: largeFontSize * 1.0,
+                                      fontSize: largeFontSize * 1.6,
                                       color: const Color(0xFF00BBFF),
                                     ),
                                   ),
                                   Text(
-                                    'VND ',
+                                    ' VND ',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: largeFontSize * 0.8,
@@ -303,26 +298,32 @@ class _FinanceScreenState extends State<FinanceScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Dự thu',
+                                'Dự Thu',
                                 style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: largeFontSize * 0.8,
-                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                  fontStyle: FontStyle.normal,
+                                  height: 1.42857,
+                                  letterSpacing: 0.5,
+                                  color: Color(0xFF17244A),
                                 ),
                               ),
-                              const SizedBox(height: 6),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
                                     '200M ',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: largeFontSize * 1.0,
+                                      fontSize: largeFontSize * 1.6,
                                       color: const Color(0xFF223F96),
                                     ),
                                   ),
                                   Text(
-                                    'VND ',
+                                    ' VND ',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: largeFontSize * 0.8,
@@ -338,7 +339,6 @@ class _FinanceScreenState extends State<FinanceScreen> {
                     ],
                   ),
 
-                  // Đường line
                   const SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.9,
@@ -356,7 +356,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(0, 238, 238, 238),
                         borderRadius: BorderRadius.circular(30),
-                        border: Border.all(color: Colors.indigo, width: 2),
+                        border: Border.all(color: Color(0xFF17244A), width: 1),
                       ),
                       child: Center(
                         child: CustomToggleButtons(),
@@ -364,20 +364,16 @@ class _FinanceScreenState extends State<FinanceScreen> {
                     ),
                   ),
 
-                  // tiêu đề Master List
                   const SizedBox(height: 16),
                   Container(
-                    height: 400.0, // Set a fixed height for the container
-                    padding:
-                        const EdgeInsets.all(8.0), // Padding inside the border
+                    height: 400.0,
+                    padding: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: const Color.fromARGB(
-                            0, 33, 149, 243), // Border color
-                        width: 2.0, // Border width
+                        color: const Color.fromARGB(0, 33, 149, 243),
+                        width: 2.0,
                       ),
-                      borderRadius:
-                          BorderRadius.circular(10.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: SingleChildScrollView(
                       child: Column(
@@ -389,12 +385,18 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                       0.035; // Font size for content
                               final double fontSizeDate = constraints.maxWidth *
                                   0.03; // Font size for date
+
+                              // Kiểm tra nếu "content" là "Đợt Dự Thu"
+                              final bool isPaymentDue =
+                                  todo.content == 'Đợt Dự Thu';
+
                               return Container(
                                 margin: const EdgeInsets.all(10),
                                 padding: const EdgeInsets.all(5),
                                 color: const Color.fromARGB(42, 255, 255, 255),
                                 child: Row(
                                   children: [
+                                    // Biểu tượng tiền tệ
                                     Column(
                                       children: [
                                         SvgPicture.asset(
@@ -405,6 +407,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                       ],
                                     ),
                                     const SizedBox(width: 5),
+                                    // Phần hiển thị nội dung
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -414,8 +417,11 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                             todo.content,
                                             style: TextStyle(
                                               fontSize: fontSizeContent * 1.1,
-                                              color: const Color.fromARGB(
-                                                  255, 0, 0, 0),
+                                              color: isPaymentDue
+                                                  ? const Color(
+                                                      0xFFFF8903) // Nếu là "Đợt Dự Thu"
+                                                  : const Color.fromARGB(255, 0,
+                                                      0, 0), // Màu mặc định
                                             ),
                                             softWrap: true,
                                           ),
@@ -423,6 +429,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                       ),
                                     ),
                                     const SizedBox(width: 10),
+                                    // Phần hiển thị ngày và tiền
                                     Expanded(
                                       child: Row(
                                         crossAxisAlignment:
@@ -432,8 +439,11 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                             ' ${todo.date}',
                                             style: TextStyle(
                                               fontSize: fontSizeDate,
-                                              color: const Color.fromARGB(
-                                                  255, 255, 132, 0),
+                                              color: isPaymentDue
+                                                  ? const Color(
+                                                      0xFFFF8903) // Nếu là "Đợt Dự Thu"
+                                                  : const Color(
+                                                      0xFFEF5C3B), // Màu cũ nếu không phải
                                             ),
                                             softWrap: true,
                                           ),
@@ -450,8 +460,11 @@ class _FinanceScreenState extends State<FinanceScreen> {
                                             ' ${todo.money}',
                                             style: TextStyle(
                                               fontSize: fontSizeDate,
-                                              color: const Color.fromARGB(
-                                                  255, 255, 132, 0),
+                                              color: isPaymentDue
+                                                  ? const Color(
+                                                      0xFFFF8903) // Nếu là "Đợt Dự Thu"
+                                                  : const Color(
+                                                      0xFFEF5C3B), // Màu cũ nếu không phải
                                             ),
                                             softWrap: true,
                                           ),
@@ -467,6 +480,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
                       ),
                     ),
                   ),
+
                   const SizedBox(height: 16),
                 ],
               );
@@ -509,7 +523,7 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
                 color: isSelected
-                    ? const Color.fromARGB(255, 2, 19, 117)
+                    ? const Color(0xFF17244A)
                     : const Color.fromARGB(0, 255, 255, 255),
                 borderRadius: BorderRadius.circular(20), // Bo góc cho từng nút
               ),

@@ -72,6 +72,25 @@ flutter:
     - assets/Icon/checkbox.svg
     - assets/Avata/
     - assets/images/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/Font/Poppins-Black.ttf
+        - asset: assets/Font/Poppins-BlackItalic.ttf
+        - asset: assets/Font/Poppins-Bold.ttf
+        - asset: assets/Font/Poppins-BoldItalic.ttf
+        - asset: assets/Font/Poppins-ExtraBold.ttf
+        - asset: assets/Font/Poppins-ExtraBoldItalic.ttf
+        - asset: assets/Font/Poppins-ExtraLight.ttf
+        - asset: assets/Font/Poppins-ExtraLightItalic.ttf
+        - asset: assets/Font/Poppins-Italic.ttf
+        - asset: assets/Font/Poppins-LightItalic.ttf
+        - asset: assets/Font/Poppins-Medium.ttf
+        - asset: assets/Font/Poppins-MediumItalic.ttf
+        - asset: assets/Font/Poppins-Regular.ttf
+        - asset: assets/Font/Poppins-SemiBold.ttf
+        - asset: assets/Font/Poppins-SemiBoldItalic.ttf
+        - asset: assets/Font/Poppins-ThinItalic.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

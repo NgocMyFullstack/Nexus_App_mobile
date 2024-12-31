@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Construction(),
     FinanceScreen(),
     ProjectProductScreen(),
-    TicketScreen(), // Đây là màn hình Ticket
+    TicketScreen(),
   ];
 
   void onItemTapped(int index) {
@@ -97,26 +97,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isSpecialScreen =
-        _selectedIndex >= 5; // Kiểm tra nếu là màn hình đặc biệt
-    final bool isTicketScreen =
-        _selectedIndex == 9; // Kiểm tra nếu là TicketScreen
+    final bool isSpecialScreen = _selectedIndex >= 5;
+    final bool isTicketScreen = _selectedIndex == 9;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('App Title'),
       ),
-      // Drawer luôn hiển thị, không bị ảnh hưởng
       drawer: CustomDrawer(onSelectScreen: onSelectScreen),
       body: isSpecialScreen
-          ? _specialScreens[_selectedIndex - 5] // Hiển thị màn hình đặc biệt
-          : _screens[_selectedIndex], // Hiển thị màn hình chính
-      // Ẩn BottomNavigationBar khi ở TicketScreen, nhưng không ẩn Drawer
+          ? _specialScreens[_selectedIndex - 5]
+          : _screens[_selectedIndex],
       bottomNavigationBar: isTicketScreen
           ? null
           : BottomNavBar(
-              currentIndex:
-                  isSpecialScreen ? 0 : _selectedIndex, // Ẩn tương ứng
+              currentIndex: isSpecialScreen ? 0 : _selectedIndex,
               onTap: onItemTapped,
             ),
     );
