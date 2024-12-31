@@ -13,16 +13,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     'Login',
-      //     style: TextStyle(
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 20,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -37,10 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  // border: Border.all(
-                  //   color: const Color.fromARGB(255, 0, 0, 0),
-                  //   width: 1,
-                  // ),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),

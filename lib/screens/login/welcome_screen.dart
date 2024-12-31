@@ -59,19 +59,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Positioned.fill(
-          //   child: AnimatedSwitcher(
-          //     duration: const Duration(seconds: 3),
-          //     switchInCurve: Curves.easeInOut,
-          //     switchOutCurve: Curves.easeInOut,
-          //     child: Image.asset(
-          //       _images[_currentImageIndex],
-          //       key: ValueKey<int>(_currentImageIndex),
-          //       fit: BoxFit.cover,
-          //       alignment: Alignment.center,
-          //     ),
-          //   ),
-          // ),
           Positioned.fill(
             child: AnimatedSwitcher(
               duration: const Duration(seconds: 3),

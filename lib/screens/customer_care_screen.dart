@@ -1,3 +1,4 @@
+import 'package:db_app/notification/bottoms_notification_screen.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import '../../routes/app_routes.dart';
@@ -52,7 +53,12 @@ class CustomerCare extends StatelessWidget {
             fit: BoxFit.contain,
           ),
           onPressed: () {
-            Scaffold.of(context).openDrawer(); // Mở drawer
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ButtomNotificationScreen(),
+              ),
+            );
           },
         ),
       ),

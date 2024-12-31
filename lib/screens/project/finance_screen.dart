@@ -1,3 +1,4 @@
+import 'package:db_app/notification/bottoms_notification_screen.dart';
 import 'package:db_app/routes/app_routes.dart';
 import 'package:db_app/screens/home_screen.dart';
 import 'package:db_app/screens/project/construction_screen.dart';
@@ -115,7 +116,12 @@ class _FinanceScreenState extends State<FinanceScreen> {
                     height: 30.0,
                   ),
                   onPressed: () {
-                    Scaffold.of(context).openDrawer();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ButtomNotificationScreen(),
+                      ),
+                    );
                   },
                 ),
               ),

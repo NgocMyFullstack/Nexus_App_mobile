@@ -1,3 +1,4 @@
+import 'package:db_app/notification/bottoms_notification_screen.dart';
 import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
         AppRoutes.informationscreen: (_) => const InformationScreen(),
         AppRoutes.financescreen: (_) => const FinanceScreen(),
         AppRoutes.projectproductscreen: (_) => const ProjectProductScreen(),
+        AppRoutes.buttomotificationscreen: (_) =>
+            const ButtomNotificationScreen(),
       },
     );
   }

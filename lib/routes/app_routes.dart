@@ -10,4 +10,5 @@ class AppRoutes {
   static const String informationscreen = '/information';
   static const String financescreen = '/finance';
   static const String projectproductscreen = '/projectproductscreen';
+  static const String buttomotificationscreen = '/buttomnotificationscreen';
 }

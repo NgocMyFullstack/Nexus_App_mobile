@@ -1,3 +1,5 @@
+import 'package:db_app/notification/bottoms_notification_screen.dart';
+import 'package:db_app/routes/app_routes.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -150,7 +152,12 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.contain,
             ),
             onPressed: () {
-              Scaffold.of(context).openDrawer();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ButtomNotificationScreen(),
+                ),
+              );
             },
           ),
         ],
