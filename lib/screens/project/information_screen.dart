@@ -1,8 +1,8 @@
 import 'package:db_app/routes/app_routes.dart';
 import 'package:db_app/screens/home_screen.dart';
-import 'package:db_app/screens/notification/notification_screen.dart';
 import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
+import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:db_app/screens/project/create_new_ticket_screen.dart';
@@ -59,6 +59,101 @@ class _InformationScreenState extends State<InformationScreen> {
           content: ' Hồ sơ tạm ứng/thanh toán - Bảo lãnh', date: '01 Aug'),
     ];
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 70,
+        centerTitle: true,
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/Icon/Vector2.svg',
+            width: 15,
+            height: 15,
+            fit: BoxFit.contain,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text(
+          'Information',
+          style: TextStyle(
+            color: Color(0xFF17244A),
+          ),
+        ),
+        actions: [
+          Builder(
+            builder: (context) => Container(
+              margin: const EdgeInsets.only(right: 5.5),
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: IconButton(
+                  icon: SvgPicture.asset(
+                    'assets/Icon/Burger.svg',
+                    width: 30,
+                    height: 30,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(40.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 0.75,
+                  color: const Color(0xFFD4D4D4),
+                ),
+              ),
+              const SizedBox(height: 6),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 34.5,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFD9D9D9).withOpacity(0.28),
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                  child: Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Expanded(
+                        child: TextField(
+                          decoration: const InputDecoration(
+                            hintText: 'Search...',
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(color: Colors.grey),
+                          ),
+                          onChanged: (value) {
+                            // Thực hiện logic tìm kiếm ở đây
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -631,6 +726,10 @@ class _InformationScreenState extends State<InformationScreen> {
             },
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: 0,
+        onTap: (index) {},
       ),
     );
   }

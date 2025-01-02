@@ -1,5 +1,6 @@
 import 'package:db_app/screens/notification/notification_screen.dart';
 import 'package:db_app/routes/app_routes.dart';
+import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // List of projects, each with its own images
   final List<Project> projects = [
     Project(
       name: 'D1 Mension',
@@ -87,15 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
   ];
-
-  late int _selectedIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedIndex = 0; // Màn hình mặc định khi bắt đầu
-  }
-
   void _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
@@ -103,16 +96,58 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void onSelectScreen(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustomDrawer(onSelectScreen: onSelectScreen),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        toolbarHeight: 70,
+        actions: [
+          Builder(
+            builder: (context) => Container(
+              margin: const EdgeInsets.only(right: 16.0),
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: IconButton(
+                  icon: SvgPicture.asset(
+                    'assets/Icon/Burger.svg',
+                    width: 30,
+                    height: 30,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer(); // Mở drawer
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+        title: const Text(
+          'Tên khách hàng',
+          style: TextStyle(
+            fontSize: 24,
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/Icon/Bell.svg',
+            width: 30,
+            height: 30,
+            fit: BoxFit.contain,
+          ),
+          onPressed: () {
+            Scaffold.of(context).openDrawer(); // Mở drawer
+          },
+        ),
+      ),
+      drawer: const CustomDrawer(),
+      backgroundColor: Colors.white,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -126,12 +161,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Project',
+                      'PRODUCT',
                       style: TextStyle(
-                        fontFamily: 'Poppins',
                         fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF17244A),
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -142,12 +176,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: projects.map((project) {
                       return GestureDetector(
                         onTap: () {
+                          // Navigate to the full-screen gallery for the selected project
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => FullScreenGallery(
                                 imageUrls: project.imagePaths,
-                                initialIndex: 0,
+                                initialIndex: 0, // Default to the first image
                               ),
                             ),
                           );
@@ -161,7 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  project.imagePaths.first,
+                                  project.imagePaths
+                                      .first, // Display the first image of the project
                                   fit: BoxFit.cover,
                                   width: double.infinity,
                                   height: double.infinity,
@@ -171,9 +207,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 bottom: 10,
                                 left: 10,
                                 child: Text(
-                                  project.name,
+                                  project.name, // Display the project name
                                   style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -196,10 +231,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       'Video',
                       style: TextStyle(
-                        fontFamily: 'Poppins',
                         fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF17244A),
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -211,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       GestureDetector(
                         onTap: () {
                           _launchURL(
-                              'https://www.youtube.com/watch?v=HtDTh3PXqAo&t=5s');
+                              'https://www.youtube.com/watch?v=HtDTh3PXqAo&t=5s'); // Đường dẫn cần mở
                         },
                         child: Container(
                           margin: const EdgeInsets.all(10),
@@ -232,7 +266,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   'Đường cong tinh tế',
                                   style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -267,7 +300,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   'Căn hộ Metropole',
                                   style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -302,7 +334,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   'Đường Cong Cuốn Hút',
                                   style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -326,9 +357,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Postcard',
                       style: TextStyle(
                         fontSize: 18,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF17244A),
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -359,7 +389,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     'Sip & Bite',
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
                                       color: const Color.fromARGB(
@@ -395,7 +424,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     'Sip & Bite',
                                     style: TextStyle(
                                       fontSize: 24,
-                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.bold,
                                       color: const Color.fromARGB(
                                           255, 220, 214, 214),
@@ -429,7 +457,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     'Sip & Bite',
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
                                       color: const Color.fromARGB(
@@ -464,7 +491,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     'Sip & Bite',
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
                                       color:
@@ -489,10 +515,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       'Promotion',
                       style: TextStyle(
-                        fontFamily: 'Poppins',
                         fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF17244A),
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -555,10 +580,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       'News',
                       style: TextStyle(
-                        fontFamily: 'Poppins',
                         fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF17244A),
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -588,12 +612,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            const SizedBox(height: 1),
+                            const SizedBox(
+                                height: 1), // Khoảng cách giữa hình và tiêu đề
                             const Text(
-                              'Đời sống',
+                              'Đời sống', // Tiêu đề của hình ảnh
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontFamily: 'Poppins',
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -632,7 +656,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 18,
-                                  fontFamily: 'Poppins',
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -668,7 +691,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: 'Poppins',
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -705,7 +727,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: 'Poppins',
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -741,7 +762,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               'Xu hướng',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontFamily: 'Poppins',
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -756,6 +776,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: 0,
+        onTap: (index) {},
       ),
     );
   }
@@ -780,8 +804,7 @@ class FullScreenGallery extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: PageView.builder(
         itemCount: imageUrls.length,
-        controller: PageController(
-            initialPage: initialIndex), // Set initial image based on index
+        controller: PageController(initialPage: initialIndex),
         itemBuilder: (context, index) {
           return Center(
             child: Image.asset(

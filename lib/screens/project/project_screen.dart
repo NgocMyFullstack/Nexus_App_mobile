@@ -3,6 +3,7 @@ import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
 import 'package:db_app/screens/project/task_detail_screen.dart';
 import 'package:db_app/screens/project/virtual_data.dart';
+import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
@@ -97,6 +98,81 @@ class _ProjectScreenState extends State<ProjectScreen> {
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 70,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leadingWidth: 70,
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 25,
+              backgroundImage: AssetImage('assets/Avata/avata1.png'),
+              backgroundColor: Colors.transparent,
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Project Name',
+                  style: TextStyle(
+                    color: Color.fromARGB(203, 255, 0, 0),
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'Customer name',
+                  style: TextStyle(
+                    color: Color(0xFF17244A),
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          Builder(
+            builder: (context) => Container(
+              margin: const EdgeInsets.only(right: 5.5),
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: IconButton(
+                  icon: SvgPicture.asset(
+                    'assets/Icon/Burger.svg',
+                    width: 30,
+                    height: 30,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 0.75,
+                  color: const Color(0xFFD4D4D4),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawer: const CustomDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -560,6 +636,10 @@ class _ProjectScreenState extends State<ProjectScreen> {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: 1,
+        onTap: (index) {},
       ),
     );
   }

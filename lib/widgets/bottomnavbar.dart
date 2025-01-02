@@ -15,13 +15,31 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      onTap: onTap,
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            Navigator.pushNamed(context, '/home');
+            break;
+          case 1:
+            Navigator.pushNamed(context, '/project');
+            break;
+          case 2:
+            Navigator.pushNamed(context, '/chat');
+            break;
+          case 3:
+            Navigator.pushNamed(context, '/product');
+            break;
+          case 4:
+            Navigator.pushNamed(context, '/customercate');
+            break;
+        }
+      },
       type: BottomNavigationBarType.fixed,
-      selectedLabelStyle: TextStyle(
+      selectedLabelStyle: const TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.bold,
       ),
-      unselectedLabelStyle: TextStyle(
+      unselectedLabelStyle: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.normal,
       ),

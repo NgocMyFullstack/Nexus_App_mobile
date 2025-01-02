@@ -891,14 +891,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyHomePage(initialIndex: 1),
-                  ),
-                );
-              },
+              onPressed: () => Navigator.of(context).pop(),
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 backgroundColor: const Color.fromRGBO(254, 211, 106, 1),

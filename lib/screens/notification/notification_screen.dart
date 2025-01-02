@@ -94,12 +94,7 @@ class NotificationScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     // Navigator.of(context).pushNamed(notification['route']!);
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      AppRoutes.home, // Route của trang ban đầu
-                      (Route<dynamic> route) =>
-                          false, // Xóa tất cả route trước đó
-                    );
+                    Navigator.of(context).pushNamed(AppRoutes.financescreen);
                   },
                 ),
               );

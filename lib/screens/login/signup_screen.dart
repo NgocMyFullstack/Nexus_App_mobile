@@ -1,4 +1,5 @@
 import 'package:db_app/main.dart';
+import 'package:db_app/screens/home_screen.dart';
 
 import '../../routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -409,7 +410,7 @@ class LoginSuccessDialog extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => MyHomePage(initialIndex: 0),
+                    builder: (context) => HomeScreen(),
                   ),
                 );
               },

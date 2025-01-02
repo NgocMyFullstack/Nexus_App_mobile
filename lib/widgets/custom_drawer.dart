@@ -1,16 +1,12 @@
-import 'package:db_app/main.dart';
 import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
-import 'package:db_app/screens/project/project_product_screen.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
+import 'package:db_app/screens/project/project_product_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
-  final Function(int) onSelectScreen;
-
-  const CustomDrawer({Key? key, required this.onSelectScreen})
-      : super(key: key);
+  const CustomDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,40 +22,60 @@ class CustomDrawer extends StatelessWidget {
                 context,
                 title: 'THÔNG TIN DỰ ÁN',
                 onTap: () {
-                  onSelectScreen(5);
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const InformationScreen(),
+                    ),
+                  );
                 },
               ),
               _buildDrawerItem(
                 context,
                 title: 'TIẾN ĐỘ DỰ ÁN',
                 onTap: () {
-                  onSelectScreen(6);
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Construction(),
+                    ),
+                  );
                 },
               ),
               _buildDrawerItem(
                 context,
                 title: 'TÀI CHÍNH DỰ ÁN',
                 onTap: () {
-                  onSelectScreen(7);
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FinanceScreen(),
+                    ),
+                  );
                 },
               ),
               _buildDrawerItem(
                 context,
                 title: 'HÀNG HÓA DỰ ÁN',
                 onTap: () {
-                  onSelectScreen(8);
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProjectProductScreen(),
+                    ),
+                  );
                 },
               ),
               _buildDrawerItem(
                 context,
                 title: 'LƯU Ý - NHẮC NHỞ',
                 onTap: () {
-                  onSelectScreen(9);
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TicketScreen(),
+                    ),
+                  );
                 },
               ),
             ],
