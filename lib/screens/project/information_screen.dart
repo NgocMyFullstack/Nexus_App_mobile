@@ -1,5 +1,6 @@
 import 'package:db_app/routes/app_routes.dart';
 import 'package:db_app/screens/home_screen.dart';
+import 'package:db_app/screens/notification/notification_screen.dart';
 import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
@@ -8,7 +9,7 @@ import 'package:db_app/screens/project/create_new_ticket_screen.dart';
 import 'package:db_app/screens/project/task_detail_screen.dart';
 import 'package:db_app/screens/project/project_screen.dart';
 import 'package:flutter_svg/svg.dart';
-import '../project/task_list.dart';
+import 'virtual_data.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:percent_indicator/percent_indicator.dart'; // Cần cài thư viện percent_indicator
 
@@ -58,98 +59,6 @@ class _InformationScreenState extends State<InformationScreen> {
           content: ' Hồ sơ tạm ứng/thanh toán - Bảo lãnh', date: '01 Aug'),
     ];
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/Icon/Vector2.svg',
-            width: 15.0,
-            height: 15.0,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text(
-          'Information',
-          style: TextStyle(
-            color: const Color(0xFF17244A),
-          ),
-        ),
-        actions: [
-          Builder(
-            builder: (context) => Container(
-              margin: const EdgeInsets.only(right: 16.0),
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(0, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: IconButton(
-                  icon: SvgPicture.asset(
-                    'assets/Icon/Burger.svg',
-                    width: 30.0,
-                    height: 30.0,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context)
-                        .openDrawer(); // Mở Drawer khi nhấn biểu tượng Burger
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(60.0),
-          child: Column(
-            children: [
-              // Đường kẻ ngang
-              Container(
-                width: 366.0, // Chiều rộng của đường kẻ
-                height: 0.75, // Chiều cao của đường kẻ
-                color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Container(
-                  width: 366.0,
-                  height: 34.5,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFD9D9D9).withOpacity(0.28),
-                    borderRadius: BorderRadius.circular(6.0),
-                  ),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: const InputDecoration(
-                            hintText: 'Search...',
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(color: Colors.grey),
-                          ),
-                          onChanged: (value) {
-                            // Thực hiện logic tìm kiếm ở đây
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      // drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -172,7 +81,8 @@ class _InformationScreenState extends State<InformationScreen> {
                       'Project Name',
                       style: TextStyle(
                         fontSize: largeFontSize,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
                         color: const Color(0xFF17244A),
                       ),
                     ),
@@ -282,8 +192,9 @@ class _InformationScreenState extends State<InformationScreen> {
                     child: Text(
                       'Contact',
                       style: TextStyle(
+                        fontFamily: 'Poppins',
                         fontSize: largeFontSize,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                         color: const Color(0xFF17244A),
                       ),
                     ),
@@ -323,7 +234,8 @@ class _InformationScreenState extends State<InformationScreen> {
                           'Record',
                           style: TextStyle(
                             fontSize: largeFontSize,
-                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
                             color: const Color(0xFF17244A),
                           ),
                         ),
@@ -435,8 +347,9 @@ class _InformationScreenState extends State<InformationScreen> {
                         child: Text(
                           'Master List',
                           style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: largeFontSize,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: const Color(0xFF17244A),
                           ),
                         ),

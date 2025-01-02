@@ -97,116 +97,6 @@ class Construction extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70, // Điều chỉnh chiều cao của AppBar
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leadingWidth: 70,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage('assets/Avata/avata1.png'),
-            backgroundColor: Colors.transparent,
-          ),
-        ),
-
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Project Timeline',
-              style: TextStyle(
-                color: Color.fromARGB(203, 255, 0, 0),
-                fontSize: 16,
-              ),
-            ),
-            Text(
-              'Customer name',
-              style: TextStyle(
-                color: const Color(0xFF17244A),
-                fontSize: 20,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Builder(
-            builder: (context) => Container(
-              margin: const EdgeInsets.only(right: 16.0),
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(0, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: IconButton(
-                  icon: SvgPicture.asset(
-                    'assets/Icon/Burger.svg',
-                    width: 30.0,
-                    height: 30.0,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context)
-                        .openDrawer(); // Mở Drawer khi nhấn biểu tượng Burger
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(60.0),
-          child: Column(
-            children: [
-              // Đường kẻ ngang
-              Container(
-                width: 366.0, // Chiều rộng của đường kẻ
-                height: 0.75, // Chiều cao của đường kẻ
-                color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Container(
-                  width: 366.0,
-                  height: 34.5,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFD9D9D9).withOpacity(0.28),
-                    borderRadius: BorderRadius.circular(6.0),
-                  ),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: const InputDecoration(
-                            hintText: 'Search...',
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(color: Colors.grey),
-                          ),
-                          onChanged: (value) {
-                            // Thực hiện logic tìm kiếm ở đây
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      // drawer: const CustomDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -223,8 +113,9 @@ class Construction extends StatelessWidget {
                       child: Text(
                         'Completed Today',
                         style: TextStyle(
-                          fontSize: constraints.maxWidth * 0.06,
-                          fontWeight: FontWeight.bold,
+                          fontSize: constraints.maxWidth * 0.05,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                           color: const Color(0xFF17244A),
                         ),
                       ),
@@ -560,9 +451,9 @@ class Construction extends StatelessWidget {
                       child: Text(
                         'Ongoing Projects',
                         style: TextStyle(
-                          fontSize: constraints.maxWidth *
-                              0.05, // Điều chỉnh font chữ
-                          fontWeight: FontWeight.bold,
+                          fontSize: constraints.maxWidth * 0.05,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                           color: const Color(0xFF17244A),
                         ),
                       ),

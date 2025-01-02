@@ -1,7 +1,8 @@
+import 'package:db_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
-class ButtomNotificationScreen extends StatelessWidget {
-  const ButtomNotificationScreen({Key? key}) : super(key: key);
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,68 +10,15 @@ class ButtomNotificationScreen extends StatelessWidget {
     List<Map<String, String>> notifications = [
       {
         'image': 'assets/Avata/gr.png',
-        'reminder': 'You better be ready! flight is tomorrow at 9am',
-        'date': '24min ago',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'You have 1 invitation tonight at 17pm',
-        'date': '2h 17min ago ',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'There is only 1 day left to reserve your hotel room!',
-        'date': 'Yesterday, 17:35 pm',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'There is only 1 day left to reserve your hotel room!',
-        'date': 'Yesterday, 17:35 pm',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'You better be ready! flight is tomorrow at 9am',
-        'date': '24min ago',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'You have 1 invitation tonight at 17pm',
-        'date': '2h 17min ago ',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'There is only 1 day left to reserve your hotel room!',
-        'date': 'Yesterday, 17:35 pm',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'There is only 1 day left to reserve your hotel room!',
-        'date': 'Yesterday, 17:35 pm',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'You better be ready! flight is tomorrow at 9am',
-        'date': '24min ago',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'You have 1 invitation tonight at 17pm',
-        'date': '2h 17min ago ',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'There is only 1 day left to reserve your hotel room!',
-        'date': 'Yesterday, 17:35 pm',
-      },
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'There is only 1 day left to reserve your hotel room!',
-        'date': 'Yesterday, 17:35 pm',
-      },
+        'reminder': 'Bạn có đợt dự thu vào ngày 15 tháng 06 năm 2024',
+        'date': 'now',
+        'route': AppRoutes.financescreen,
+      }
     ];
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         actions: [
           Builder(
@@ -113,6 +61,7 @@ class ButtomNotificationScreen extends StatelessWidget {
           },
         ),
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -130,7 +79,7 @@ class ButtomNotificationScreen extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                   title: Text(
-                    'Reminder: ${notification['reminder']}',
+                    'Thông báo: ${notification['reminder']}',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -144,7 +93,13 @@ class ButtomNotificationScreen extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.of(context).maybePop();
+                    // Navigator.of(context).pushNamed(notification['route']!);
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.home, // Route của trang ban đầu
+                      (Route<dynamic> route) =>
+                          false, // Xóa tất cả route trước đó
+                    );
                   },
                 ),
               );

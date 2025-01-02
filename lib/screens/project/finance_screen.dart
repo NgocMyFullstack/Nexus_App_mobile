@@ -1,4 +1,4 @@
-import 'package:db_app/notification/bottoms_notification_screen.dart';
+import 'package:db_app/screens/notification/notification_screen.dart';
 import 'package:db_app/routes/app_routes.dart';
 import 'package:db_app/screens/home_screen.dart';
 import 'package:db_app/screens/project/construction_screen.dart';
@@ -9,7 +9,7 @@ import 'package:db_app/screens/project/create_new_ticket_screen.dart';
 import 'package:db_app/screens/project/task_detail_screen.dart';
 import 'package:db_app/screens/project/project_screen.dart';
 import 'package:flutter_svg/svg.dart';
-import '../project/task_list.dart';
+import 'virtual_data.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:percent_indicator/percent_indicator.dart'; // Cần cài thư viện percent_indicator
 
@@ -63,88 +63,6 @@ class _FinanceScreenState extends State<FinanceScreen> {
           content: 'Đợt Dự Thu', date: '15 June 2024', money: '200M VND'),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 19.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Customer Name',
-                style: TextStyle(
-                  color: Color(0xFF17244A),
-                  fontFamily: 'Poppins',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  height: 1.4,
-                  letterSpacing: 0.5,
-                  textBaseline: TextBaseline.alphabetic,
-                ),
-              ),
-              const Text(
-                'Good Morning',
-                style: TextStyle(
-                  color: Color(0xFFEF5C3B),
-                  fontFamily: 'Poppins',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
-                  height: 1.42857,
-                  letterSpacing: 0.5,
-                  textBaseline: TextBaseline.alphabetic,
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          Builder(
-            builder: (context) => Container(
-              margin: const EdgeInsets.only(right: 16.0),
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(0, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: IconButton(
-                  icon: SvgPicture.asset(
-                    'assets/Icon/Bell.svg',
-                    width: 30.0,
-                    height: 30.0,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ButtomNotificationScreen(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(10.0),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 0.75,
-                  color: const Color(0xFFD4D4D4),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      // drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

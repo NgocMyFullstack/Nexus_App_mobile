@@ -2,7 +2,7 @@ import 'package:db_app/screens/project/construction_screen.dart';
 import 'package:db_app/screens/project/finance_screen.dart';
 import 'package:db_app/screens/project/information_screen.dart';
 import 'package:db_app/screens/project/task_detail_screen.dart';
-import 'package:db_app/screens/project/task_list.dart';
+import 'package:db_app/screens/project/virtual_data.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
@@ -97,81 +97,6 @@ class _ProjectScreenState extends State<ProjectScreen> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70, // Điều chỉnh chiều cao của AppBar
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leadingWidth: 70,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: CircleAvatar(
-            radius: 10,
-            backgroundImage: AssetImage('assets/Avata/avata1.png'),
-            backgroundColor: Colors.transparent,
-          ),
-        ),
-
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Project Name',
-              style: TextStyle(
-                color: Color.fromARGB(203, 255, 0, 0),
-                fontSize: 16,
-              ),
-            ),
-            Text(
-              'Customer name',
-              style: TextStyle(
-                color: const Color(0xFF17244A),
-                fontSize: 20,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Builder(
-            builder: (context) => Container(
-              margin: const EdgeInsets.only(right: 16.0),
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(0, 255, 255, 255),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: IconButton(
-                  icon: SvgPicture.asset(
-                    'assets/Icon/Burger.svg',
-                    width: 30.0,
-                    height: 30.0,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context)
-                        .openDrawer(); // Mở Drawer khi nhấn biểu tượng Burger
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(10.0),
-          child: Column(
-            children: [
-              // Đường kẻ ngang
-              Container(
-                width: 366.0, // Chiều rộng của đường kẻ
-                height: 0.75, // Chiều cao của đường kẻ
-                color: const Color(0xFFD4D4D4), // Màu sắc của đường kẻ
-              ),
-            ],
-          ),
-        ),
-      ),
-      // drawer: const CustomDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -188,15 +113,16 @@ class _ProjectScreenState extends State<ProjectScreen> {
                       child: Text(
                         "Yesterday's Project Gallery",
                         style: TextStyle(
-                          fontSize: constraints.maxWidth * 0.06,
-                          fontWeight: FontWeight.bold,
+                          fontSize: constraints.maxWidth * 0.05,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                           color: const Color(0xFF17244A),
                         ),
                       ),
                     );
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 6),
 
                 // Danh sách cuộn ngang
                 SizedBox(
@@ -274,6 +200,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                         Text(
                                           project.title,
                                           style: TextStyle(
+                                            fontFamily: 'Poppins',
                                             fontSize: fontSizeTitle,
                                             fontWeight: FontWeight.bold,
                                             color: const Color.fromARGB(
@@ -344,9 +271,9 @@ class _ProjectScreenState extends State<ProjectScreen> {
                       child: Text(
                         'To do list today',
                         style: TextStyle(
-                          fontSize: constraints.maxWidth *
-                              0.05, // Điều chỉnh font chữ
-                          fontWeight: FontWeight.bold,
+                          fontSize: constraints.maxWidth * 0.05,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                           color: const Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
@@ -409,6 +336,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                         Text(
                                           'Due on: ${todo.date}',
                                           style: TextStyle(
+                                            fontFamily: 'Poppins',
                                             fontSize: fontSizeDate,
                                             color: const Color.fromARGB(
                                                 255, 0, 0, 0),
@@ -443,9 +371,9 @@ class _ProjectScreenState extends State<ProjectScreen> {
                       child: Text(
                         "Today's Processed Images",
                         style: TextStyle(
-                          fontSize: constraints.maxWidth *
-                              0.05, // Điều chỉnh font chữ
-                          fontWeight: FontWeight.bold,
+                          fontSize: constraints.maxWidth * 0.05,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
                           color: const Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),

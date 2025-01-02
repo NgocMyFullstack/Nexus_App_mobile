@@ -1,4 +1,4 @@
-import 'package:db_app/notification/bottoms_notification_screen.dart';
+import 'package:db_app/screens/notification/notification_screen.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,57 +11,6 @@ class Chat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        actions: [
-          Builder(
-            builder: (context) => Container(
-              margin: const EdgeInsets.only(right: 16.0),
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: IconButton(
-                  icon: SvgPicture.asset(
-                    'assets/Icon/Burger.svg',
-                    width: 30,
-                    height: 30,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-        title: const Text(
-          'Tên khách hàng',
-          style: TextStyle(
-            color: const Color(0xFF17244A),
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/Icon/Bell.svg',
-            width: 30,
-            height: 30,
-            fit: BoxFit.contain,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ButtomNotificationScreen(),
-              ),
-            );
-          },
-        ),
-      ),
-      // drawer: const CustomDrawer(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
