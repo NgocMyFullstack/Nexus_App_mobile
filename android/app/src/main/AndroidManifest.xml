@@ -49,6 +49,9 @@
         <!-- Required for background notifications -->
         <receiver android:exported="true" android:name="com.dexterous.flutterlocalnotifications.receivers.ActionBroadcastReceiver" />
         <receiver android:exported="true" android:name="com.dexterous.flutterlocalnotifications.receivers.DismissedReceiver" />
+        <meta-data
+    android:name="com.google.firebase.messaging.default_notification_badge_icon_enable"
+    android:value="false" />
 
     </application>
     <!-- Required to query activities that can process text, see:

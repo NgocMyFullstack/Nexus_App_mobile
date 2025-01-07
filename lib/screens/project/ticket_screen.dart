@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'virtual_data.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:percent_indicator/percent_indicator.dart'; // Cần cài thư viện percent_indicator
-import '../../main.dart';
 
 class TicketScreen extends StatefulWidget {
   const TicketScreen({super.key});
@@ -31,6 +30,7 @@ class _TicketScreenState extends State<TicketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         centerTitle: true,
         leading: IconButton(
@@ -124,6 +124,7 @@ class _TicketScreenState extends State<TicketScreen> {
           ),
         ),
       ),
+      backgroundColor: Colors.white,
       drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(

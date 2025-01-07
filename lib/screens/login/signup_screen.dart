@@ -1,4 +1,3 @@
-import 'package:db_app/main.dart';
 import 'package:db_app/screens/home_screen.dart';
 
 import '../../routes/app_routes.dart';

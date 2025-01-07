@@ -1,5 +1,4 @@
 import 'package:db_app/screens/notification/notification_screen.dart';
-import 'package:db_app/routes/app_routes.dart';
 import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
@@ -23,71 +22,71 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // List of projects, each with its own images
   final List<Project> projects = [
-    Project(
-      name: 'D1 Mension',
-      imagePaths: [
-        'assets/images/110.jpg',
-        'assets/images/115.jpg',
-        'assets/images/117.jpg',
-        'assets/images/119.jpg',
-      ],
-    ),
-    Project(
-      name: 'Đảo Kim Cương',
-      imagePaths: [
-        'assets/images/222.jpg',
-        'assets/images/223.jpg',
-        'assets/images/224.jpg',
-        'assets/images/225.jpg',
-      ],
-    ),
-    Project(
-      name: 'Define anh Hà',
-      imagePaths: [
-        'assets/images/444.jpg',
-        'assets/images/445.jpg',
-        'assets/images/446.jpg',
-        'assets/images/447.jpg',
-        'assets/images/448.jpg',
-      ],
-    ),
-    Project(
-      name: 'Filmore',
-      imagePaths: [
-        'assets/images/551.jpg',
-        'assets/images/555.jpg',
-        'assets/images/553.jpg',
-        'assets/images/554.jpg',
-      ],
-    ),
-    Project(
-      name: 'Horizon Phú Mỹ Hưng',
-      imagePaths: [
-        'assets/images/661.jpg',
-        'assets/images/662.jpg',
-        'assets/images/663.jpg',
-        'assets/images/666.jpg',
-      ],
-    ),
-    Project(
-      name: 'Metropole',
-      imagePaths: [
-        'assets/images/771.jpg',
-        'assets/images/772.jpg',
-        'assets/images/773.jpg',
-        'assets/images/774.jpg',
-        'assets/images/775.jpg',
-      ],
-    ),
-    Project(
-      name: 'MidTown',
-      imagePaths: [
-        'assets/images/881.jpg',
-        'assets/images/882.jpg',
-        'assets/images/883.jpg',
-        'assets/images/884.jpg',
-      ],
-    ),
+    // Project(
+    //   name: 'D1 Mension',
+    //   imagePaths: [
+    //     'assets/images/110.jpg',
+    //     'assets/images/115.jpg',
+    //     'assets/images/117.jpg',
+    //     'assets/images/119.jpg',
+    //   ],
+    // ),
+    // Project(
+    //   name: 'Đảo Kim Cương',
+    //   imagePaths: [
+    //     'assets/images/222.jpg',
+    //     'assets/images/223.jpg',
+    //     'assets/images/224.jpg',
+    //     'assets/images/225.jpg',
+    //   ],
+    // ),
+    // Project(
+    //   name: 'Define anh Hà',
+    //   imagePaths: [
+    //     'assets/images/444.jpg',
+    //     'assets/images/445.jpg',
+    //     'assets/images/446.jpg',
+    //     'assets/images/447.jpg',
+    //     'assets/images/448.jpg',
+    //   ],
+    // ),
+    // Project(
+    //   name: 'Filmore',
+    //   imagePaths: [
+    //     'assets/images/551.jpg',
+    //     'assets/images/555.jpg',
+    //     'assets/images/553.jpg',
+    //     'assets/images/554.jpg',
+    //   ],
+    // ),
+    // Project(
+    //   name: 'Horizon Phú Mỹ Hưng',
+    //   imagePaths: [
+    //     'assets/images/661.jpg',
+    //     'assets/images/662.jpg',
+    //     'assets/images/663.jpg',
+    //     'assets/images/666.jpg',
+    //   ],
+    // ),
+    // Project(
+    //   name: 'Metropole',
+    //   imagePaths: [
+    //     'assets/images/771.jpg',
+    //     'assets/images/772.jpg',
+    //     'assets/images/773.jpg',
+    //     'assets/images/774.jpg',
+    //     'assets/images/775.jpg',
+    //   ],
+    // ),
+    // Project(
+    //   name: 'MidTown',
+    //   imagePaths: [
+    //     'assets/images/881.jpg',
+    //     'assets/images/882.jpg',
+    //     'assets/images/883.jpg',
+    //     'assets/images/884.jpg',
+    //   ],
+    // ),
   ];
   void _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
@@ -119,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 30,
                   ),
                   onPressed: () {
-                    Scaffold.of(context).openDrawer(); // Mở drawer
+                    Scaffold.of(context).openDrawer(); 
                   },
                 ),
               ),
@@ -142,7 +141,12 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.contain,
           ),
           onPressed: () {
-            Scaffold.of(context).openDrawer(); // Mở drawer
+                              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NotificationScreen(),
+                    ),
+                  );
           },
         ),
       ),
@@ -197,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
                                   project.imagePaths
-                                      .first, // Display the first image of the project
+                                      .first, 
                                   fit: BoxFit.cover,
                                   width: double.infinity,
                                   height: double.infinity,
@@ -207,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 bottom: 10,
                                 left: 10,
                                 child: Text(
-                                  project.name, // Display the project name
+                                  project.name, 
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -699,11 +703,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
 
                       const SizedBox(
-                          width: 16), // Khoảng cách giữa các khối hình ảnh
+                          width: 16), 
                       GestureDetector(
                         onTap: () {
                           _launchURL(
-                              'https://dbhomes.com.vn/chuyen-muc/tin-tuc/van-hoa/'); // Đường dẫn cần mở
+                              'https://dbhomes.com.vn/chuyen-muc/tin-tuc/van-hoa/'); 
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,

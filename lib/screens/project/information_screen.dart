@@ -1,13 +1,6 @@
-import 'package:db_app/routes/app_routes.dart';
-import 'package:db_app/screens/home_screen.dart';
-import 'package:db_app/screens/project/construction_screen.dart';
-import 'package:db_app/screens/project/ticket_screen.dart';
 import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:db_app/screens/project/create_new_ticket_screen.dart';
-import 'package:db_app/screens/project/task_detail_screen.dart';
-import 'package:db_app/screens/project/project_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'virtual_data.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
@@ -60,6 +53,7 @@ class _InformationScreenState extends State<InformationScreen> {
     ];
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         centerTitle: true,
         leading: IconButton(
@@ -154,6 +148,7 @@ class _InformationScreenState extends State<InformationScreen> {
         ),
       ),
       drawer: const CustomDrawer(),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -512,8 +507,7 @@ class _InformationScreenState extends State<InformationScreen> {
                                 ),
                                 progressColor: const Color.fromARGB(
                                     255, 255, 102, 0), // Màu cam
-                                backgroundColor: const Color.fromARGB(
-                                    255, 0, 0, 50), // Màu xanh đậm
+                                backgroundColor: Colors.white,// Màu xanh đậm
                               ),
                               const SizedBox(
                                   height:

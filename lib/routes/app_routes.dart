@@ -4,8 +4,10 @@ class AppRoutes {
   static const String signup = '/signup';
   static const String home = "/home";
   static const String project = "/project";
+  static const String project_product = "/project-product";
   static const String chat = "/chat";
   static const String product = "/product";
+  static const String productdetails = "/productdetails";
   static const String customercate = "/customercate";
   static const String informationscreen = '/information';
   static const String financescreen = '/finance';

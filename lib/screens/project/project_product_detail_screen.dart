@@ -1,13 +1,13 @@
 import 'dart:io';
+import 'package:db_app/data/virtual_data.dart';
+import 'package:db_app/routes/app_routes.dart';
+import 'package:db_app/screens/project/project_product_screen.dart';
+import 'package:db_app/services/notifi_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
-
-import '../../main.dart';
-import '../../widgets/custom_drawer.dart';
-import 'project_product_screen.dart';
 
 class ProjectProductDetailScreen extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -72,28 +72,98 @@ class _ProjectProductDetailScreenState
     }
   }
 
-  void _updateProductStatus() {
+  Future<void> _updateProductStatus() async {
+    // Lưu trạng thái cũ trước khi cập nhật
+    final oldInProduction = productData["is_in_production"];
+    final oldQualityControl = productData["is_quality_control"];
+    final oldDelivery = productData["is_delivered_yet"];
+
     // In Production status
     if (productData["in_production_images"].isNotEmpty) {
-      productData["is_in_production"] = 1; // Started production
+      // Chỉ thêm thông báo khi trạng thái thay đổi từ chưa sản xuất (0 hoặc null) sang đang sản xuất (1)
+      if (productData["is_in_production"] < 1) {
+        productData["is_in_production"] = 1; // Started production
+        addNotification(
+            image: 'assets/Avata/gr.png',
+            reminder: 'Đã bắt đầu sản xuất sản phẩm $productName',
+            route: AppRoutes.project_product);
+        await NotificationService().scheduleNotification(
+          id: 2,
+          title: 'Thông báo',
+          body: 'Đã bắt đầu sản xuất sản phẩm $productName',
+          route: AppRoutes.notificationscreen,
+          scheduledDate: DateTime.now().add(const Duration(seconds: 10)),
+        );
+      }
     }
 
     // Quality Control status
     if (productData["quality_control_images"].isNotEmpty) {
-      productData["is_in_production"] = 2; // Completed production
-      productData["is_quality_control"] = 1; // Started QC
+      // Chỉ thêm thông báo khi chuyển sang trạng thái QC mới
+      if (productData["is_quality_control"] < 1) {
+        productData["is_in_production"] = 2; // Completed production
+        productData["is_quality_control"] = 1; // Started QC
+        addNotification(
+            image: 'assets/Avata/gr.png',
+            reminder: 'Đang kiểm tra chất lượng sản phẩm $productName',
+            route: AppRoutes.project_product);
+        await NotificationService().scheduleNotification(
+          id: 2,
+          title: 'Thông báo',
+          body: 'Đang kiểm tra chất lượng sản phẩm $productName',
+          route: AppRoutes.notificationscreen,
+          scheduledDate: DateTime.now().add(const Duration(seconds: 10)),
+        );
+      }
     }
 
     // Delivery status
     if (productData["delivery_images"].isNotEmpty) {
-      productData["is_quality_control"] = 2; // Completed QC
-      productData["is_delivered_yet"] = 1; // Started delivery
+      if (productData["is_delivered_yet"] < 1) {
+        productData["is_quality_control"] = 2; // Completed QC
+        productData["is_delivered_yet"] = 1; // Started delivery
+      }
     }
 
     // Delivered status
     if (productData["deliveried_images"].isNotEmpty) {
-      productData["is_delivered_yet"] = 2; // Completed delivery
+      // Chỉ thêm thông báo khi chuyển sang trạng thái đã giao hàng
+      if (productData["is_delivered_yet"] < 2) {
+        productData["is_delivered_yet"] = 2; // Completed delivery
+        addNotification(
+            image: 'assets/Avata/gr.png',
+            reminder: 'Giao hàng thành công sản phẩm $productName',
+            route: AppRoutes.project_product);
+        await NotificationService().scheduleNotification(
+          id: 2,
+          title: 'Thông báo',
+          body: 'Giao hàng thành công sản phẩm $productName',
+          route: AppRoutes.notificationscreen,
+          scheduledDate: DateTime.now().add(const Duration(seconds: 10)),
+        );
+      }
     }
+  }
+
+  void addNotification({
+    required String image,
+    required String reminder,
+    required String route,
+  }) {
+    notifications.add({
+      'image': image,
+      'reminder': reminder,
+      'datetime': DateTime.now().toString(),
+      'route': route,
+      'isRead': false,
+    });
+
+    // Sắp xếp lại sau khi thêm
+    notifications.sort((a, b) {
+      DateTime dateA = DateTime.parse(a['datetime']!);
+      DateTime dateB = DateTime.parse(b['datetime']!);
+      return dateB.compareTo(dateA);
+    });
   }
 
   Widget _buildImageSection(String title, String imageKey) {
@@ -164,7 +234,14 @@ class _ProjectProductDetailScreenState
             width: 15.0,
             height: 15.0,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProjectProductScreen(),
+              ),
+            );
+          },
         ),
         title: Text(
           productData["product_name"],

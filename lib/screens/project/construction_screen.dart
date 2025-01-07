@@ -1,15 +1,8 @@
-import 'package:db_app/screens/project/information_screen.dart';
 import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:db_app/screens/project/ticket_screen.dart';
-import 'package:db_app/screens/project/create_new_ticket_screen.dart';
-import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:percent_indicator/percent_indicator.dart'; // Cần cài thư viện percent_indicator
-import 'package:intl/intl.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../routes/app_routes.dart';
 
 class PlanItem {
   final String title;
@@ -99,6 +92,7 @@ class Construction extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -209,6 +203,7 @@ class Construction extends StatelessWidget {
         ),
       ),
       drawer: const CustomDrawer(),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -522,7 +517,7 @@ class Construction extends StatelessWidget {
                             ),
                             const SizedBox(height: 8),
                             LinearProgressIndicator(
-                              value: 1.0, // Tiến độ hoàn thành (50%)
+                              value: 1.0,
                               backgroundColor: Colors.white.withOpacity(0.2),
                               valueColor: const AlwaysStoppedAnimation<Color>(
                                   Color.fromARGB(255, 255, 255, 255)),

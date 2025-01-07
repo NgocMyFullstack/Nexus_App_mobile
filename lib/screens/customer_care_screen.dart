@@ -4,8 +4,6 @@ import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import '../../routes/app_routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:db_app/screens/project/ticket_screen.dart';
-import 'package:db_app/screens/project/create_new_ticket_screen.dart';
 
 class CustomerCare extends StatelessWidget {
   const CustomerCare({Key? key}) : super(key: key);
@@ -14,6 +12,7 @@ class CustomerCare extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         centerTitle: true,
         leading: IconButton(
@@ -79,6 +78,7 @@ class CustomerCare extends StatelessWidget {
         ),
       ),
       drawer: const CustomDrawer(),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(26.0),
         child: Column(

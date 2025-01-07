@@ -1,21 +1,12 @@
-import 'package:db_app/routes/app_routes.dart';
+import 'package:db_app/data/virtual_data.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Sample data for notifications
-    List<Map<String, String>> notifications = [
-      {
-        'image': 'assets/Avata/gr.png',
-        'reminder': 'Bạn có đợt dự thu vào ngày 15 tháng 06 năm 2024',
-        'date': 'now',
-        'route': AppRoutes.financescreen,
-      }
-    ];
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -70,8 +61,14 @@ class NotificationScreen extends StatelessWidget {
             children: notifications.map((notification) {
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                  color: notification['isRead'] == true 
+                      ? Colors.grey[100] 
+                      : Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: ListTile(
-                  contentPadding: EdgeInsets.zero,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   leading: Image.asset(
                     notification['image']!,
                     width: 60,
@@ -86,15 +83,16 @@ class NotificationScreen extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                    notification['date']!,
+                    timeago.format(DateTime.parse(notification['datetime']!), locale: 'vi'),
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
                     ),
                   ),
                   onTap: () {
-                    // Navigator.of(context).pushNamed(notification['route']!);
-                    Navigator.of(context).pushNamed(AppRoutes.financescreen);
+                    // Update the notification's read status when clicked
+                    notification['isRead'] = true;
+                    Navigator.of(context).pushNamed(notification['route']!);
                   },
                 ),
               );

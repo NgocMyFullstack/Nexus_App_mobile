@@ -7,7 +7,6 @@ import 'package:image_painter/image_painter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../main.dart';
 
 // Biến trạng thái để lưu giá trị được chọn
 String _selectedFloor = '';

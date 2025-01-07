@@ -41,8 +41,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
                         ? const Color(0xFF007AFF)
                         : status == 2
                             ? const Color(0xFF00D09E)
-                            : Colors
-                                .white, // Màu mặc định cho giá trị không hợp lệ
+                            : Colors.white,
               ),
             ),
           ),
@@ -66,6 +65,7 @@ class _ProjectProductScreenState extends State<ProjectProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         centerTitle: true,
         leading: IconButton(

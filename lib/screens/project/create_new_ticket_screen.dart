@@ -7,7 +7,6 @@ import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:image_painter/image_painter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:db_app/screens/project/ticket_screen.dart';
-import '../../main.dart';
 import 'virtual_data.dart';
 import 'package:intl/intl.dart';
 import 'package:quickalert/quickalert.dart';
@@ -432,6 +431,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         leading: IconButton(
           icon: SvgPicture.asset(
@@ -448,6 +448,7 @@ class _CreateNewTicketScreenState extends State<CreateNewTicketScreen> {
           ),
         ),
       ),
+      
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

@@ -1,19 +1,11 @@
-import 'package:db_app/screens/project/construction_screen.dart';
-import 'package:db_app/screens/project/finance_screen.dart';
-import 'package:db_app/screens/project/information_screen.dart';
 import 'package:db_app/screens/project/task_detail_screen.dart';
 import 'package:db_app/screens/project/virtual_data.dart';
 import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:db_app/screens/project/ticket_screen.dart';
-import 'package:db_app/screens/project/create_new_ticket_screen.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:percent_indicator/percent_indicator.dart'; // Cần cài thư viện percent_indicator
-import 'package:intl/intl.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../routes/app_routes.dart';
 
 class PlanItem {
   final String title;
@@ -99,6 +91,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -173,6 +166,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
         ),
       ),
       drawer: const CustomDrawer(),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

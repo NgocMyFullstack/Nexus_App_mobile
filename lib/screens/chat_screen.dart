@@ -3,8 +3,6 @@ import 'package:db_app/widgets/bottomnavbar.dart';
 import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:db_app/screens/project/ticket_screen.dart';
-import 'package:db_app/screens/project/create_new_ticket_screen.dart';
 
 class Chat extends StatelessWidget {
   const Chat({Key? key}) : super(key: key);
@@ -13,6 +11,7 @@ class Chat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         centerTitle: true,
         leading: IconButton(
@@ -78,6 +77,7 @@ class Chat extends StatelessWidget {
         ),
       ),
       drawer: const CustomDrawer(),
+      backgroundColor: Colors.white,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

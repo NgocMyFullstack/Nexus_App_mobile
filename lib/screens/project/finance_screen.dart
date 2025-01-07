@@ -1,18 +1,8 @@
-import 'package:db_app/screens/notification/notification_screen.dart';
 import 'package:db_app/routes/app_routes.dart';
-import 'package:db_app/screens/home_screen.dart';
-import 'package:db_app/screens/project/construction_screen.dart';
-import 'package:db_app/screens/project/ticket_screen.dart';
+import 'package:db_app/services/notifi_service.dart';
 import 'package:db_app/widgets/bottomnavbar.dart';
-import 'package:db_app/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:db_app/screens/project/create_new_ticket_screen.dart';
-import 'package:db_app/screens/project/task_detail_screen.dart';
-import 'package:db_app/screens/project/project_screen.dart';
 import 'package:flutter_svg/svg.dart';
-import 'virtual_data.dart';
-import 'package:insta_image_viewer/insta_image_viewer.dart';
-import 'package:percent_indicator/percent_indicator.dart'; // Cần cài thư viện percent_indicator
 
 class FinanceScreen extends StatefulWidget {
   const FinanceScreen({super.key});
@@ -65,6 +55,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
     ];
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -121,11 +112,11 @@ class _FinanceScreenState extends State<FinanceScreen> {
                     height: 30.0,
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NotificationScreen(),
-                      ),
+                    NotificationService().showNotification(
+                      id: 2,
+                      title: 'Thông báo',
+                      body: 'Bạn có đợt dự thu vào ngày 15 tháng 06 năm 2024',
+                      route: AppRoutes.notificationscreen,
                     );
                   },
                 ),
@@ -149,6 +140,7 @@ class _FinanceScreenState extends State<FinanceScreen> {
           ),
         ),
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
