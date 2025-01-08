@@ -133,8 +133,7 @@ class _TicketScreenState extends State<TicketScreen> {
             builder: (context, constraints) {
               final double baseWidth = constraints.maxWidth; // Độ rộng màn hình
               final double smallFontSize = baseWidth * 0.03; // Kích thước nhỏ
-              final double mediumFontSize =
-                  baseWidth * 0.04; // Kích thước trung bình
+              final double mediumFontSize = baseWidth * 0.04;
               final double largeFontSize = baseWidth * 0.05; // Kích thước lớn
 
               return Column(
